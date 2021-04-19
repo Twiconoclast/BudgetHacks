@@ -10,6 +10,11 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-}, {
-  timestamps: true
-})
+  balance: {
+  type: Number,
+  required: true
+  }
+}, 
+{ timestamps: true})
+
+module.exports = User = mongoose.model('User', UserSchema);

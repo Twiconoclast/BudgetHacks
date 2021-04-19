@@ -10,6 +10,9 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-}, {
-  timestamps: true
-})
+  balance: {
+  type: Number,
+  required: true
+  }
+}, 
+{ timestamps: true})

@@ -7,6 +7,7 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 const validateSignupInput = require('../../validation/signup');
 const validateLoginInput = require('../../validation/login');
+const validateBudgetInput = require('../../validation/budget')
 
 router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 
@@ -31,7 +32,7 @@ router.post("/signup", (req, res) => {
           budget: {
             home: 0,
             savings: 0,
-            transportion: 0,
+            transportation: 0,
             personalCare: 0,
             foodAndDining: 0,
             shopping: 0,

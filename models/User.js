@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const BudgetSchema = new Schema({
                                   home: {type: Number},
                                   savings: {type: Number},
-                                  transportion: {type: Number},
+                                  transportation: {type: Number},
                                   personalCare: {type: Number},
                                   foodAndDining: {type: Number},
                                   shopping: {type: Number},

@@ -27,7 +27,18 @@ router.post("/signup", (req, res) => {
         const newUser = new User({
           username: req.body.username,
           balance: req.body.balance,
-          password: req.body.password
+          password: req.body.password,
+          budget: {
+            home: 0,
+            savings: 0,
+            transportion: 0,
+            personalCare: 0,
+            foodAndDining: 0,
+            shopping: 0,
+            entertainment: 0,
+            miscellaneous: 0,
+            debt: 0
+          }
         })
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {

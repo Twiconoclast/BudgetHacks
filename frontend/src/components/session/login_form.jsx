@@ -59,8 +59,10 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div className="session-form-container">
-        <form className='login-form' onSubmit={this.handleSubmit}> 
-          <div>
+        <form className='login-form' onSubmit={this.handleSubmit}>
+          <h2>Sign In</h2>
+          <h4>Build a Budget - Track Spending - Earn Rewards</h4> 
+          <div className="login-form-div">
               <label className='login-label'> Username:
                 <br/>
                 <input className='login-input' type="text"
@@ -78,7 +80,9 @@ class LoginForm extends React.Component {
                     />
                 </label>
             <br/>
+            <div className='button-holder'>
             <button className='submit-button' type="submit">Submit</button>
+            </div>
             {this.renderErrors()}
           </div>
         </form>

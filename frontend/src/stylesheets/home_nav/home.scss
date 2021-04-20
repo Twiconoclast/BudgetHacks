@@ -1,0 +1,260 @@
+.homepage {
+    background-color: $light-blue-green;
+
+    .homepage-content {
+        padding: 3%;
+
+        .homepage-main {
+            background-color: $off-white;
+            columns: 2 400px;
+            border-radius: 5px;
+
+            h1 {
+                color: $dark-green;
+                text-align: center;
+                font-size: 60px;
+                font-weight: 700;
+                margin-top: 15%;
+            }
+
+            h3 {
+                color: $dark-blue;
+                text-align: center;
+                margin: 2%;
+                font-size: 30px;
+                font-weight: 700;
+            }
+        }
+    }
+
+    .homepage-secondary-holder {
+        background-color: $off-white;
+        border-radius: 5px;
+        padding: 20px;
+
+        h1 {
+            color: black;
+            text-align: left;
+            font-size: 38px;
+            font-weight: 700;
+            margin-top: 2%;
+            margin-bottom: 2%;
+            margin-left: 2%;
+        }
+
+        .homepage-secondary {
+            columns: 2 625px;
+            column-gap: 10px;
+        }
+            .homepage-secondary-left {
+                columns: 2 300px;
+                div {
+                    margin-left: 20px;
+                    margin-right: 10px;
+                }
+            }
+
+            .homepage-secondary-right {
+                columns: 2 300px;
+                div {
+                    margin-left: 20px;
+                    margin-right: 10px;
+                }
+            }
+
+            .blockHead:after {
+                color: $dark-blue;
+                border-left: 35px solid;
+                border-top: 35px solid transparent;
+                border-bottom: 35px solid transparent;
+                display: inline-block;
+                content: '';
+                position: absolute;
+                right: -35px;
+                top: 0;
+            }
+
+            .blockHead {
+                background-color: $dark-blue;
+                height: 70px;
+                width: 230px;
+                line-height: 70px;
+                padding-left: 5px;
+                display: inline-block;
+                position: relative;
+
+            }
+            p {
+                margin-bottom: 20px;
+                text-align: left;
+                margin-left: 20px;
+            }
+
+            .one {
+                background-color: $blue;
+            }
+            .one:after{
+                color: $blue;
+            }
+            
+            .two {
+                background-color: $red;
+            }
+            .two:after{
+                color: $red;
+            }
+
+            .three {
+                background-color: $yellow;
+            }
+            .three:after{
+                color: $yellow;
+            }
+
+            .four {
+                background-color: $dark-green;
+            }
+            .four:after{
+                color: $dark-green;
+            }
+
+            .arrow-text {
+                color: white;
+                font-weight: bold;
+                padding-left: 10px;
+                font-size: 20pt;
+                margin: 0;
+            }
+    }
+
+    @include mobile {
+        .homepage-content {
+            padding: 2%;
+            width: 96%;
+
+            .homepage-main {
+                background-color: $off-white;
+                columns: 2 400px;
+                border-radius: 5px;
+
+                h1 {
+                    color: $dark-green;
+                    text-align: center;
+                    font-size: 40px;
+                    font-weight: 700;
+                    margin-top: 8%;
+                }
+
+                h3 {
+                    color: $dark-blue;
+                    text-align: center;
+                    margin: 2%;
+                    font-size: 24px;
+                    font-weight: 700;
+                }
+            }
+
+            .homepage-secondary-holder {
+                background-color: $off-white;
+                border-radius: 5px;
+                padding: 15px;
+
+                h1 {
+                    color: black;
+                    text-align: left;
+                    font-size: 32px;
+                    font-weight: 700;
+                    margin-top: 2%;
+                    margin-bottom: 5%;
+                    margin-left: 2%;
+                }
+
+            .homepage-secondary {
+                columns: 2 625px;
+                column-gap: 10px;
+            }
+
+            .homepage-secondary-left {
+                columns: 2 300px;
+                    div {
+                        margin-left: 5%;
+                        margin-right: 5%;
+                    }
+                }
+
+                .homepage-secondary-right {
+                    columns: 2 300px;
+                    div {
+                        margin-left: 5%;
+                        margin-right: 5%;
+                    }
+                }
+
+                .blockHead:after {
+                    color: $dark-blue;
+                    border-left: 35px solid;
+                    border-top: 35px solid transparent;
+                    border-bottom: 35px solid transparent;
+                    display: inline-block;
+                    content: '';
+                    position: absolute;
+                    right: -35px;
+                    top: 0;
+                }
+
+                .blockHead {
+                    background-color: $dark-blue;
+                    height: 70px;
+                    width: 230px;
+                    line-height: 70px;
+                    padding-left: 5px;
+                    display: inline-block;
+                    position: relative;
+
+                }
+                p {
+                    margin-bottom: 20px;
+                    text-align: left;
+                    margin-left: 20px;
+                }
+
+                .one {
+                    background-color: $blue;
+                }
+                .one:after{
+                    color: $blue;
+                }
+                
+                .two {
+                    background-color: $red;
+                }
+                .two:after{
+                    color: $red;
+                }
+
+                .three {
+                    background-color: $yellow;
+                }
+                .three:after{
+                    color: $yellow;
+                }
+
+                .four {
+                    background-color: $dark-green;
+                }
+                .four:after{
+                    color: $dark-green;
+                }
+
+                .arrow-text {
+                    color: white;
+                    font-weight: bold;
+                    padding-left: 10px;
+                    font-size: 20pt;
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+}

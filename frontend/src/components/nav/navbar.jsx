@@ -1,8 +1,9 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom'
 import {BsPersonPlusFill, BsShieldLockFill} from 'react-icons/bs';
 import {BiLockOpen} from 'react-icons/bi';
+import logo from '../../images/logo_plain.png';
+
 
 
 class NavBar extends React.Component {
@@ -39,10 +40,10 @@ class NavBar extends React.Component {
                  <nav className="login-signup">
                 <div className='nav-left'>
                     {/* Our Logo on the left */}
-                    {/* <Link to="/" className="header-link">
-                    <img src={window.photos.logo} alt="Mint Logo"/>
-                    </Link> */}
-                    <h1>BudgetHacks</h1>
+                    <Link to="/" className="header-link">
+                    <img src={logo} alt="BudgetHacks Logo"/>
+                    </Link>
+                    {/* <h1>BudgetHacks</h1> */}
                 </div>
                 <div className='nav-right'>
                     <button>

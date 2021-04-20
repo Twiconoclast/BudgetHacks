@@ -59,7 +59,7 @@ class NavBar extends React.Component {
                     </Link>
                     </button>
         
-                    <button onClick={this.handleDemo}>
+                    <button className='demo' onClick={this.handleDemo}>
                     <p className='icon'><BiLockOpen/></p> 
                     <div className='button-text'> Demo Sign In</div> 
                     </button>

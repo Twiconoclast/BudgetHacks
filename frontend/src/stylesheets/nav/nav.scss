@@ -1,0 +1,52 @@
+body {
+    font-family: $serif;
+}
+
+.login-signup {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h1 {
+        font-size: 40px;
+        font-weight: 700;
+    }
+
+    button {
+        border: 2px solid $gray;
+        padding: 10px;
+        margin-left: 10px;
+        border-radius: 7px;
+    }
+
+    button:hover {
+        box-shadow: 0 0 2px 2px $gray;
+    }
+
+    .nav-right {
+        display: flex;
+        align-items: center;
+
+         .demo {
+            display: flex;
+            align-items: center;
+        }
+
+        button a {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    p.icon {
+        padding-right: 5px;
+        
+        svg {
+            height: 17px;
+            width: 17px;
+            align-self: center;
+            padding-top: 2px;
+        }
+    }
+}
+

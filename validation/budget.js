@@ -22,27 +22,35 @@ module.exports = function validateBudgetInput(data){
     errors.budget = "Must be a decimal from 0 to 1"
   }
   if (Validator.isFloat(data.budget.savings, {min: 0 , max: 1})){
+    total.push(data.budget.savings)
     errors.budget = "Must be a decimal from 0 to 1"
   }
   if (Validator.isFloat(data.budget.transportation, {min: 0 , max: 1})){
+    total.push(data.budget.transportation)
     errors.budget = "Must be a decimal from 0 to 1"
   }
   if (Validator.isFloat(data.budget.personalCare, {min: 0 , max: 1})){
+    total.push(data.budget.personalCare)
     errors.budget = "Must be a decimal from 0 to 1"
   
   }if (Validator.isFloat(data.budget.foodAndDining, {min: 0 , max: 1})){
+    total.push(data.budget.foodAndDining)
     errors.budget = "Must be a decimal from 0 to 1"
   }
   if (Validator.isFloat(data.budget.shopping, {min: 0 , max: 1})){
+    total.push(data.budget.shopping)
     errors.budget = "Must be a decimal from 0 to 1"
   }
   if (Validator.isFloat(data.budget.personalCare, {min: 0 , max: 1})){
+    total.push(data.budget.personalCare)
     errors.budget = "Must be a decimal from 0 to 1"
   }
   if (Validator.isFloat(data.budget.miscellaneous, {min: 0 , max: 1})){
+    total.push(data.budget.miscellaneous)
     errors.budget = "Must be a decimal from 0 to 1"
   }
   if (Validator.isFloat(data.budget.debt, {min: 0 , max: 1})){
+    total.push(data.budget.debt)
     errors.budget = "Must be a decimal from 0 to 1"
   }
 

@@ -23,6 +23,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
 });
 
 router.get('/user/:user_id', passport.authenticate('jwt', { session: false }), (req, res) => {
+  if(req.user._id.equals(req.params.user_id)){
    Transaction.find({user: req.params.user_id})
         .sort({ date: -1 })
         .then(transactions => res.json(transactions))
@@ -30,6 +31,9 @@ router.get('/user/:user_id', passport.authenticate('jwt', { session: false }), (
             res.status(404).json({ notransactionsfound: 'No transactions found from this user' }
         )
     );
+  }else{
+    res.status(404).json({ notransactionsfound: 'No transactions found from this user' })
+  }
 })
 
 router.get('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
@@ -49,13 +53,21 @@ router.get('/:id', passport.authenticate('jwt', { session: false }), (req, res) 
 })
 
 router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
-  Transaction.findByIdAndDelete(req.params.id, function(err, transaction){
-    if(err){
-      res.send("No transaction found from this ID");
+  
+  Transaction.findById(req.params.id).then(transaction =>{
+    if(req.user._id.equals(transaction.user)){
+       Transaction.findByIdAndDelete(req.params.id, function(err, transaction){
+      if(err){
+        res.status(404).json({ notransactionfound: 'No transaction found for this ID' })
+      }else{
+        res.send(transaction)
+      };
+    })
     }else{
-      res.send(transaction)
-    };
+      res.status(404).json({ notransactionfound: 'No transaction found for this ID' })
+    }
   })
+
 })
 
 router.patch('/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
@@ -65,14 +77,20 @@ router.patch('/:id', passport.authenticate('jwt', {session: false}), (req, res) 
     return res.status(400).json(errors);
   }
 
-  Transaction.findByIdAndUpdate(req.params.id, req.body, function(err, result){
+  Transaction.findById(req.params.id).then(transaction =>{
+    if(req.user._id.equals(transaction.user)){
+      Transaction.findByIdAndUpdate(req.params.id, req.body, function(err, result){
       if(err){
         res.send(err);
       }else{
         res.send(result);
       }
+    })
+    }else{
+      res.status(404).json({ notransactionfound: 'This transaction cannot be updated' })
     }
-  )
+  })
+
 })
 
 

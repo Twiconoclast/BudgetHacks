@@ -5,10 +5,10 @@ const passport = require('passport');
 const User = require('../../models/User');
 const validateBudgetInput = require('../../validation/budget');
 
+// passport.authenticate('jwt', {session: false}),
 
-router.patch('/:id', passport.authenticate('jwt', {session: false}),
-  (req, res) => {
-    console.log(req)
+router.patch('/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
+  console.log(req)
   const { errors, isValid } = validateBudgetInput(req.body);
 
   if (!isValid) {
@@ -19,15 +19,13 @@ router.patch('/:id', passport.authenticate('jwt', {session: false}),
       if(err){
         console.log(err)
         res.send(err);
-      }else{
+      } else{
         console.log(result)
         res.send(result);
       }
   }
 )
-
-
-  })
+})
 
   router.get('/:id', passport.authenticate('jwt', {session: false}),
   (req, res) => {

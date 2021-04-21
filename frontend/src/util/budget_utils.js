@@ -5,7 +5,5 @@ export const fetchBudget = (id) => {
 }
 
 export const updateBudget = (id, budget) => {
-  console.log(id)
-  console.log(budget)
   return axios.patch(`/api/budget/${id}`, budget);
 };

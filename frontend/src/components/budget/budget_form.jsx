@@ -31,7 +31,7 @@ class BudgetForm extends Component {
     }
 
     handleChangeIncome(income) {
-        return (e) => this.setState({income: parseInt(e.currentTarget.value.toFixed(2))})
+        return (e) => this.setState({income: parseInt(e.currentTarget.value)})
     }
 
     showForm() {
@@ -62,15 +62,12 @@ class BudgetForm extends Component {
 
     handleSubmit(e) {
         e.preventDefault()
-        console.log("I'M IN HANDLESUBMIT")
         if (this.percentOfIncome.toFixed(2) > 1.00) {
         } else if (this.percentOfIncome.toFixed(2) < .99) {
             this.setState(prevState => ({savings: (prevState.savings + (1 - this.percentOfIncome)).toFixed(2)}))
             this.props.updateBudget(this.props.user.id, this.state)
             .then(() => this.props.history.push('/budget'))
         } else {
-            console.log(this.state)
-            console.log(this.props.user.id)
             this.props.updateBudget(this.props.user.id, this.state)
             .then(() => this.props.history.push('/budget'))
         }  

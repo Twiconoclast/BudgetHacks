@@ -1,8 +1,11 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom'
 import {BsPersonPlusFill, BsShieldLockFill} from 'react-icons/bs';
 import {BiLockOpen} from 'react-icons/bi';
+import logo from '../../images/logo_plain.png';
+import {ImProfile} from 'react-icons/im';
+import {IoMdLogOut} from 'react-icons/io';
+import {GiHamburgerMenu} from 'react-icons/gi';
 
 
 class NavBar extends React.Component {
@@ -23,26 +26,50 @@ class NavBar extends React.Component {
       this.props.logout();
   }
 
-   // Selectively render links dependent on whether the user is logged in
+    myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
   getLinks() {
       if (this.props.loggedIn) {
         return (
-            <div>
-                {/* <Link to={'/tweets'}>All Tweets</Link> */}
-                <Link to={'/profile'}>Profile</Link>
-                {/* <Link to={'/new_tweet'}>Write a Tweet</Link> */}
-                <button onClick={this.logoutUser}>Logout</button>
-            </div>
+            <nav className="logout">
+                <div className='nav-left'>
+                    <div class="dropdown">
+                        <button onclick="myFunction()" class="dropbtn"><GiHamburgerMenu/></button>
+                        <div id="myDropdown" class="dropdown-content">
+                            <a href="#">Budget</a>
+                            <a href="#">Transactions</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </div>
+                    <Link to="/" className="header-link">
+                    <img src={logo} alt="BudgetHacks Logo"/>
+                    </Link>
+                </div>
+                <div className='nav-right'>
+                    <button>
+                    <Link to={'/profile'}>                    
+                    <p className='icon'><ImProfile/></p>
+                    <div className='button-text'> Profile </div>
+                    </Link>
+                    </button>
+                    <button onClick={this.logoutUser}>
+                        <a href="">
+                        <p className='icon'><IoMdLogOut/></p>
+                        <div className='button-text'> Logout </div>
+                        </a>
+                    </button>
+                </div>
+            </nav>
         );
       } else {
         return (
-                 <nav className="login-signup">
+                <nav className="login-signup">
                 <div className='nav-left'>
-                    {/* Our Logo on the left */}
-                    {/* <Link to="/" className="header-link">
-                    <img src={window.photos.logo} alt="Mint Logo"/>
-                    </Link> */}
-                    <h1>BudgetHacks</h1>
+                    <Link to="/" className="header-link">
+                    <img src={logo} alt="BudgetHacks Logo"/>
+                    </Link>
                 </div>
                 <div className='nav-right'>
                     <button>
@@ -65,10 +92,6 @@ class NavBar extends React.Component {
                     </button>
                 </div>
             </nav>
-            // <div>
-            //     <Link to={'/signup'}>Sign Up</Link>
-            //     <Link to={'/login'}>Login</Link>
-            // </div>
         );
       }
     }

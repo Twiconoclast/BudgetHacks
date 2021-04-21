@@ -1,10 +1,13 @@
 @import "stylesheets/base/reset.scss";
 @import "stylesheets/base/colors.scss";
 @import "stylesheets/base/fonts.scss";
+@import "stylesheets/base/media.scss";
 
-@import "stylesheets/nav/nav.scss";
-@import "stylesheets/session/session_form.scss";
-
+@import "stylesheets/home_nav/nav.scss";
+@import "stylesheets/home_nav/logged_out_nav.scss";
+@import "stylesheets/home_nav/home.scss";
+@import "stylesheets/session/signup_form.scss";
+@import "stylesheets/session/login_form.scss";
 
 
 .App {

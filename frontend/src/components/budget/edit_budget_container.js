@@ -2,7 +2,7 @@
 import BudgetForm from './budget_form'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
-// import {updateBudget} from '../../actions/budget_actions'
+import {updateBudget} from '../../actions/budget_actions'
 
 const mSTP = (state, ownProps) => ({
     // user: state.session.user,
@@ -18,24 +18,24 @@ const mSTP = (state, ownProps) => ({
     // miscellaneous: .02,
     // debt: .08,
     // formShow: false
-    user: state.session.user,
-    budget: state.session.user.budget,
-    income: state.session.user.budget.income,
-    home: state.session.user.budget.home ? state.session.user.budget.home : .40,
-    savings: state.session.user.budget.savings ? state.session.user.budget.savings : .12,
-    transportation: state.session.user.budget.transportation ? state.session.user.budget.transportation : .08,
-    personalCare: state.session.user.budget.personalCare ? state.session.user.budget.personalCare : .05,
-    foodAndDining: state.session.user.budget.foodAndDining ? state.session.user.budget.foodAndDining : .15,
-    shopping: state.session.user.budget.shopping ? state.session.user.budget.shopping : .05,
-    entertainment: state.session.user.budget.entertainment ? state.session.user.budget.entertainment : .05,
-    miscellaneous: state.session.user.budget.miscellaneous ? state.session.user.budget.miscellaneous : .02,
-    debt: state.session.user.budget.debt ? state.session.user.budget.debt : .08,
-    formShow: state.session.user.budget.income ? true : false
+    user: state.user,
+    budget: state.user.budget,
+    income: state.user.budget.income,
+    home: state.user.budget.income ? state.user.budget.home : .40,
+    savings: state.user.budget.income ? state.user.budget.savings : .12,
+    transportation: state.user.budget.income ? state.user.budget.transportation : .08,
+    personalCare: state.user.budget.income ? state.user.budget.personalCare : .05,
+    foodAndDining: state.user.budget.income ? state.user.budget.foodAndDining : .15,
+    shopping: state.user.budget.income ? state.user.budget.shopping : .05,
+    entertainment: state.user.budget.income ? state.user.budget.entertainment : .05,
+    miscellaneous: state.user.budget.income ? state.user.budget.miscellaneous : .02,
+    debt: state.user.budget.income ? state.user.budget.debt : .08,
+    formShow: state.user.budget.income ? true : false
 // })
 })
 
 const mDTP = dispatch => ({
-    // updateBudget: (id, budget) => dispatch(updateUser(id, budget))
+    updateBudget: (id, budget) => dispatch(updateBudget(id, budget))
 })
 
 export default withRouter(connect(mSTP, mDTP)(BudgetForm))

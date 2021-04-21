@@ -4,7 +4,6 @@ const validNum = require('./valid-num');
 
 module.exports = function validateBudgetInput(data){
   let errors = {};
-
   data.income = validNum(data.income) ? data.income : "";
   data.home = validNum(data.home) ? data.home : "";
   data.savings = validNum(data.savings) ? data.savings: "";

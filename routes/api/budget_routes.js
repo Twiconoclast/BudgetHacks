@@ -8,19 +8,16 @@ const validateBudgetInput = require('../../validation/budget');
 
 router.patch('/:id', passport.authenticate('jwt', {session: false}),
   (req, res) => {
-    console.log(req)
-  const { errors, isValid } = validateBudgetInput(req.body);
 
+  const { errors, isValid } = validateBudgetInput(req.body);
   if (!isValid) {
     return res.status(400).json(errors);
   }
 
   User.findByIdAndUpdate({_id: req.params.id}, {budget: req.body}, function(err, result){
       if(err){
-        console.log(err)
         res.send(err);
       }else{
-        console.log(result)
         res.send(result);
       }
   }

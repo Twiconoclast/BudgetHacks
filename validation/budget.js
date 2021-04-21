@@ -16,8 +16,8 @@ module.exports = function validateBudgetInput(data){
   data.miscellaneous = validNum(data.miscellaneous) ? data.miscellaneous: "";
   data.debt = validNum(data.debt) ? data.debt: "";
 
-  if (!Validator.isFloat(data.home, {min: Number(0)})){
-    errors.home = "Income must equal to or greater than 0.00"
+  if (!Validator.isFloat(data.income, {min: Number(0)})){
+    errors.income = "Income must equal to or greater than 0.00"
   }
   
   if (!Validator.isFloat(data.home, {min: 0 , max: 1})){

@@ -8,7 +8,7 @@ const validateBudgetInput = require('../../validation/budget');
 
 router.patch('/:id', passport.authenticate('jwt', {session: false}),
   (req, res) => {
-
+    console.log(req)
   const { errors, isValid } = validateBudgetInput(req.body);
 
   if (!isValid) {
@@ -17,8 +17,10 @@ router.patch('/:id', passport.authenticate('jwt', {session: false}),
 
   User.findByIdAndUpdate({_id: req.params.id}, {budget: req.body}, function(err, result){
       if(err){
+        console.log(err)
         res.send(err);
       }else{
+        console.log(result)
         res.send(result);
       }
   }
@@ -26,5 +28,12 @@ router.patch('/:id', passport.authenticate('jwt', {session: false}),
 
 
   })
+
+  router.get('/:id', passport.authenticate('jwt', {session: false}),
+  (req, res) => {
+
+  User.findById({_id: req.params.id}).then((user) => (
+    res.send(user.budget)
+  ))})
 
   module.exports = router;

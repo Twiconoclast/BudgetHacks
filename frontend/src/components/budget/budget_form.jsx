@@ -26,11 +26,12 @@ class BudgetForm extends Component {
     }
 
     componentDidMount() {
+        this.props.fetchBudget(this.props.user.id)
         this.hiddenOrShow = this.props.formShow ? '' : 'hidden'
     }
 
     handleChangeIncome(income) {
-        return (e) => this.setState({income: e.currentTarget.value})
+        return (e) => this.setState({income: parseInt(e.currentTarget.value.toFixed(2))})
     }
 
     showForm() {
@@ -61,16 +62,17 @@ class BudgetForm extends Component {
 
     handleSubmit(e) {
         e.preventDefault()
-        if (this.percentOfIncome.toFixed(2) > 1.01) {
-            console.log('over')
+        console.log("I'M IN HANDLESUBMIT")
+        if (this.percentOfIncome.toFixed(2) > 1.00) {
         } else if (this.percentOfIncome.toFixed(2) < .99) {
             this.setState(prevState => ({savings: (prevState.savings + (1 - this.percentOfIncome)).toFixed(2)}))
-            // this.props.updateBudget(user.id, this.state)
-        //     .then(() => this.props.history.push('/budget'))
+            this.props.updateBudget(this.props.user.id, this.state)
+            .then(() => this.props.history.push('/budget'))
         } else {
-            // this.props.updateBudget(user.id, this.state)
-        //     .then(() => this.props.history.push('/budget'))
-            this.props.history.push('/budget')
+            console.log(this.state)
+            console.log(this.props.user.id)
+            this.props.updateBudget(this.props.user.id, this.state)
+            .then(() => this.props.history.push('/budget'))
         }  
     }
 

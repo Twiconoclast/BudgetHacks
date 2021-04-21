@@ -1,5 +1,11 @@
 import axios from 'axios';
 
+export const fetchBudget = (id) => {
+  return axios.get(`/api/budget/${id}`);
+}
+
 export const updateBudget = (id, budget) => {
-  return axios.post(`/api/budget/${id}`, budget);
+  console.log(id)
+  console.log(budget)
+  return axios.patch(`/api/budget/${id}`, budget);
 };

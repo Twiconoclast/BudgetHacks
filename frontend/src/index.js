@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -35,9 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Decode the token to obtain the user's information
     const decodedUser = jwt_decode(localStorage.jwtToken);
+    const fullUser = JSON.parse(localStorage.user)
 
     // Create a preconfigured state we can immediately add to our store
-    const preloadedState = { session: { isAuthenticated: true, user: decodedUser } };
+    const preloadedState = { session: { isAuthenticated: true, user: decodedUser }, user: fullUser };
 
     store = configureStore(preloadedState);
 
@@ -53,6 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // If this is a first time user, start with an empty store
     store = configureStore({});
   }
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
   // Render our root component and pass in the store as a prop
   const root = document.getElementById('root');
 

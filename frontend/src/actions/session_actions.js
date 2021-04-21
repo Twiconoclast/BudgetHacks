@@ -1,5 +1,6 @@
 import * as APIUtil from '../util/session_api_util';
 import jwt_decode from 'jwt-decode';
+// import User from '../../../models/User';
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
@@ -48,6 +49,7 @@ export const login = user => dispatch => (
     APIUtil.login(user).then(res => {
         const { token, user } = res.data;
         localStorage.setItem('jwtToken', token);
+        localStorage.setItem('user', JSON.stringify(user))
         APIUtil.setAuthToken(token);
         const decoded = jwt_decode(token);
         dispatch(receiveCurrentUser(decoded))
@@ -61,6 +63,7 @@ export const login = user => dispatch => (
 // We wrote this one earlier
 export const logout = () => dispatch => {
     localStorage.removeItem('jwtToken')
+    localStorage.removeItem('user')
     APIUtil.setAuthToken(false)
     dispatch(logoutUser())
 };

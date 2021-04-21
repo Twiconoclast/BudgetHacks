@@ -6,6 +6,10 @@ class BudgetShow extends Component {
     //     super(props)
     // }
 
+    componentDidMount() {
+        this.props.fetchBudget(this.props.user.id)
+    }
+
     render() {
         return (
             <div>

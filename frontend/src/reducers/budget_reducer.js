@@ -6,7 +6,7 @@ const budgetReducer = (state={}, action) => {
     let newState = Object.assign({}, state)
     switch(action.type) {
         case RECEIVE_BUDGET: {
-            newState = action.budget
+            newState = action.budget.data
             return newState
         }
         case RECEIVE_USER_LOGOUT: {

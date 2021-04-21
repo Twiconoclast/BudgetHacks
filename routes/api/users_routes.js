@@ -58,7 +58,6 @@ router.post("/signup", (req, res) => {
   router.post('/login', (req, res) => {
     const { errors, isValid } = validateLoginInput(req.body);
 
-    console.log(errors);
 
     if (!isValid) {
         return res.status(400).json(errors);
@@ -101,8 +100,19 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
     id: req.user.id,
     username: req.user.username,
     balance: req.user.balance
+    // user: req.user
   });
 });
+
+// router.get('/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
+
+//   res.json({
+//     id: req.user.id,
+//     username: req.user.username,
+//     balance: req.user.balance
+//     // user: req.user
+//   });
+// });
 
 
 

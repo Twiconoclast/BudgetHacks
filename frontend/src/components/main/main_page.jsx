@@ -18,7 +18,7 @@ class MainPage extends React.Component {
           </section>
           <br/>
           <section className= 'homepage-secondary-holder'>
-              <h1>The BudgetHacks Process:</h1>
+              <h1>BudgetHacks Process:</h1>
             <section className= 'homepage-secondary'>
             <div className= 'homepage-secondary-left'>
                 <div className='canvas'>
@@ -56,8 +56,6 @@ class MainPage extends React.Component {
                   <p>Earn rewards for sticking to the budget!</p>
                 </div>
               </div>
-            <div className= 'homepage-secondary-right'>
-            </div>
             </section>
           </section>
         </section>

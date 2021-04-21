@@ -61,7 +61,7 @@ class LoginForm extends React.Component {
       <div className="session-form-container">
         <form className='login-form' onSubmit={this.handleSubmit}>
           <h2>Sign In</h2>
-          <h4>Build a Budget - Track Spending - Earn Rewards</h4> 
+          <h4>Build a Budget, Track Spending, <br/> Earn Rewards</h4> 
           <div className="login-form-div">
               <label className='login-label'> Username:
                 <br/>

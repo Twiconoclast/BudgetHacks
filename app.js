@@ -7,6 +7,7 @@ const users = require("./routes/api/users_routes");
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const budget = require('./routes/api/budget_routes')
+const transaction = require('./routes/api/transaction_routes');
 
 mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true})
@@ -18,6 +19,7 @@ app.use(express.json());
 
 app.use("/api/users", users);
 app.use("/api/budget", budget);
+app.use("/api/transactions", transaction);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('frontend/build'));

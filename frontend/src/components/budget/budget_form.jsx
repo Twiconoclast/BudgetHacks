@@ -43,14 +43,16 @@ class BudgetForm extends Component {
     }
 
     showForm() {
-        if (!this.props.formShow) {
+        console.log("in the show form")
+        if (this.props.formShow === 'hidden') {
             this.hiddenOrShow = ''
-        }
+            console.log(this.hiddenOrShow)
+        } 
     }
 
     calculate(e) {
-        e.preventDefault()
-        this.showForm()
+        e.preventDefault();
+        this.showForm();
     }
 
     handleChangeDollars(type) {
@@ -98,110 +100,118 @@ class BudgetForm extends Component {
             this.percentOfIncome = percentOfIncome / 100
         }
         return (
-            <div>
-                <h3>Set your Budget</h3>
-                <div>
-                    <form onSubmit={this.calculate}> 
-                        <label>Income: 
-                            <div>$
-                                <input type='number' value={this.state.income} onChange={this.handleChangeIncome('income')} />
+            <div className="budget-form-container">
+                <div className="budget-forms">
+                    <form className='budget-form' onSubmit={this.calculate}> 
+                    <h1 className="budget-heading">Set your Budget</h1>
+                    <h3>Step 1) Please enter or update your income below:</h3>
+                        <label className='budget-label'> 
+                            <div className='budget-input-container'><span>Income:</span> <span> $ </span> 
+                                <input className='budget-input' type='number' value={this.state.income} onChange={this.handleChangeIncome('income')} />
                             </div>
-                            <button>Update Income</button>
+                            <div className='button-holder'>
+                            <button className='submit-button' type='submit'>Update Income</button>
+                            </div>
                         </label>
                     </form> 
-                    <div>
-                        <label>Percent of Income: 
-                            <div className={this.redOrGreen}>{percentOfIncome}</div>
-                        </label>
-                        <label>Total Dollars Entered: 
-                            <div className={this.redOrGreen}>{totalDollarsEntered.toFixed(2)}</div>
-                        </label>
-                    </div>
-                    <form onSubmit={this.handleSubmit}>
-                        <div className={this.hiddenOrShow}>
-                            <label>Savings: 
-                                <div><span>$</span>
-                                    <input type='number' value={savings} onChange={this.handleChangeDollars('savings')}  />
+                    <form className={`budget-form ${this.hiddenOrShow}`} onSubmit={this.handleSubmit}>
+                        <div className='budget-heading-container'>
+                            <label className='budget-heading-label'>Total Income Percentage: 
+                                <div className={`budget-form ${this.redOrGreen}`}>{percentOfIncome}%</div>
+                            </label>
+                            <label className='budget-heading-label'>Total Dollars: 
+                                <div className={`budget-form ${this.redOrGreen}`}>${totalDollarsEntered.toFixed(2)}</div>
+                            </label>
+                        </div>
+                        <div>
+                            <label className='budget-label'>Savings: 
+                            <div className='budget-input-columns'>
+                                <div className='budget-input-container'>
+                                    <span>$</span>
+                                    <input className='budget-input' type='number' value={savings} onChange={this.handleChangeDollars('savings')}  />
                                 </div>
-                                <div>
-                                    <input type='number' value={this.state.savings* 100} onChange={this.handleChangePercent('savings')}  />
+                                <div className='budget-input-container'>
+                                    <input className='budget-input' type='number' value={this.state.savings* 100} onChange={this.handleChangePercent('savings')}  />
+                                    <span>%</span>
+                                </div>
+                            </div>
+                            </label>
+                            <label className='budget-label'>Debt: 
+                                <div className='budget-input-container'><span>$</span>
+                                    <input className='budget-input' type='number' value={debt} onChange={this.handleChangeDollars('debt')}  />
+                                </div>
+                                <div className='budget-input-container'>
+                                    <input className='budget-input' type='number' value={this.state.debt* 100} onChange={this.handleChangePercent('debt')}  />
                                     <span>%</span>
                                 </div>
                             </label>
-                            <label>Debt: 
-                                <div><span>$</span>
-                                    <input type='number' value={debt} onChange={this.handleChangeDollars('debt')}  />
+                            <label className='budget-label'>Transportation: 
+                                <div className='budget-input-container'><span>$</span>
+                                    <input className='budget-input' type='number' value={transportation} onChange={this.handleChangeDollars('transportation')}  />
                                 </div>
-                                <div>
-                                    <input type='number' value={this.state.debt* 100} onChange={this.handleChangePercent('debt')}  />
+                                <div className='budget-input-container'>
+                                    <input className='budget-input' type='number' value={this.state.transportation* 100} onChange={this.handleChangePercent('transportation')}  />
                                     <span>%</span>
                                 </div>
                             </label>
-                            <label>Transportation: 
-                                <div><span>$</span>
-                                    <input type='number' value={transportation} onChange={this.handleChangeDollars('transportation')}  />
+                            <label className='budget-label'>Home: 
+                                <div className='budget-input-container'><span>$</span>
+                                    <input className='budget-input' type='number' value={home} onChange={this.handleChangeDollars('home')}  />
                                 </div>
-                                <div>
-                                    <input type='number' value={this.state.transportation* 100} onChange={this.handleChangePercent('transportation')}  />
+                                <div className='budget-input-container'>
+                                    <input className='budget-input' type='number' value={this.state.home* 100} onChange={this.handleChangePercent('home')}  />
                                     <span>%</span>
                                 </div>
                             </label>
-                            <label>Home: 
-                                <div><span>$</span>
-                                    <input type='number' value={home} onChange={this.handleChangeDollars('home')}  />
+                            <label className='budget-label'>Personal Care: 
+                                <div className='budget-input-container'> <span>$</span>
+                                    <input className='budget-input' type='number' value={personalCare} onChange={this.handleChangeDollars('personalCare')}  />
                                 </div>
-                                <div>
-                                    <input type='number' value={this.state.home* 100} onChange={this.handleChangePercent('home')}  />
+                                <div className='budget-input-container'>
+                                    <input className='budget-input' type='number' value={this.state.personalCare* 100} onChange={this.handleChangePercent('personalCare')}  />
                                     <span>%</span>
                                 </div>
                             </label>
-                            <label>Personal Care: 
-                                <div><span>$</span>
-                                    <input type='number' value={personalCare} onChange={this.handleChangeDollars('personalCare')}  />
+                            <label className='budget-label'>Food And Dining: 
+                                <div className='budget-input-container'><span>$</span>
+                                    <input className='budget-input' type='number' value={foodAndDining} onChange={this.handleChangeDollars('foodAndDining')}  />
                                 </div>
-                                <div>
-                                    <input type='number' value={this.state.personalCare* 100} onChange={this.handleChangePercent('personalCare')}  />
+                                <div className='budget-input-container'>
+                                    <input className='budget-input' type='number' value={this.state.foodAndDining* 100} onChange={this.handleChangePercent('foodAndDining')}  />
                                     <span>%</span>
                                 </div>
                             </label>
-                            <label>Food And Dining: 
-                                <div><span>$</span>
-                                    <input type='number' value={foodAndDining} onChange={this.handleChangeDollars('foodAndDining')}  />
+                            <label className='budget-label'>Shopping: 
+                                <div className='budget-input-container'><span>$</span>
+                                    <input className='budget-input' type='number' value={shopping} onChange={this.handleChangeDollars('shopping')}  />
                                 </div>
-                                <div>
-                                    <input type='number' value={this.state.foodAndDining* 100} onChange={this.handleChangePercent('foodAndDining')}  />
+                                <div className='budget-input-container'>
+                                    <input className='budget-input' type='number' value={this.state.shopping* 100} onChange={this.handleChangePercent('shopping')}  />
                                     <span>%</span>
                                 </div>
                             </label>
-                            <label>Shopping: 
-                                <div><span>$</span>
-                                    <input type='number' value={shopping} onChange={this.handleChangeDollars('shopping')}  />
+                            <label className='budget-label'>Entertainment: 
+                                <div className='budget-input-container'><span>$</span>
+                                    <input className='budget-input' type='number' value={entertainment} onChange={this.handleChangeDollars('entertainment')}  />
                                 </div>
-                                <div>
-                                    <input type='number' value={this.state.shopping* 100} onChange={this.handleChangePercent('shopping')}  />
+                                <div className='budget-input-container'>
+                                    <input className='budget-input' type='number' value={this.state.entertainment* 100} onChange={this.handleChangePercent('entertainment')}  />
                                     <span>%</span>
                                 </div>
                             </label>
-                            <label>Entertainment: 
-                                <div><span>$</span>
-                                    <input type='number' value={entertainment} onChange={this.handleChangeDollars('entertainment')}  />
+                            <label className='budget-label'>Miscellaneous: 
+                                <div className='budget-input-container'><span>$</span>
+                                    <input className='budget-input' type='number' value={miscellaneous} onChange={this.handleChangeDollars('miscellaneous')}  />
                                 </div>
-                                <div>
-                                    <input type='number' value={this.state.entertainment* 100} onChange={this.handleChangePercent('entertainment')}  />
-                                    <span>%</span>
-                                </div>
-                            </label>
-                            <label>Miscellaneous: 
-                                <div><span>$</span>
-                                    <input type='number' value={miscellaneous} onChange={this.handleChangeDollars('miscellaneous')}  />
-                                </div>
-                                <div>
-                                    <input type='number' value={this.state.miscellaneous* 100} onChange={this.handleChangePercent('miscellaneous')}  />
+                                <div className='budget-input-container'>
+                                    <input className='budget-input' type='number' value={this.state.miscellaneous* 100} onChange={this.handleChangePercent('miscellaneous')}  />
                                     <span>%</span>
                                 </div>
                             </label>
                         </div>
-                        <button>Submit</button>
+                        <div className='button-holder'>
+                        <button type='submit-button'>Submit</button>
+                        </div>
                     </form>
                 </div>
                 <Link to='/dashboard'>Back to Home</Link>

@@ -30,6 +30,7 @@ router.post("/signup", (req, res) => {
           balance: req.body.balance,
           password: req.body.password,
           budget: {
+            income: 0,
             home: 0,
             savings: 0,
             transportation: 0,

@@ -20,7 +20,7 @@ const mSTP = (state, ownProps) => ({
     // formShow: false
     user: state.session.user,
     budget: state.budget,
-    income: state.budget.income,
+    income: state.budget.income ? state.budget.income : 0.00,
     home: state.budget.income ? state.budget.home : .40,
     savings: state.budget.income ? state.budget.savings : .12,
     transportation: state.budget.income ? state.budget.transportation : .08,

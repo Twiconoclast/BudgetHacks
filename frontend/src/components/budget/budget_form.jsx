@@ -5,17 +5,18 @@ class BudgetForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            income: this.props.income,
-            home: this.props.home,
-            savings: this.props.savings,
-            transportation: this.props.transportation,
-            personalCare: this.props.personalCare,
-            foodAndDining: this.props.foodAndDining,
-            shopping: this.props.shopping,
-            entertainment: this.props.entertainment,
-            miscellaneous: this.props.miscellaneous,
-            debt: this.props.debt
+            income: parseFloat(this.props.income),
+            home: parseFloat(this.props.home),
+            savings: parseFloat(this.props.savings),
+            transportation: parseFloat(this.props.transportation),
+            personalCare: parseFloat(this.props.personalCare),
+            foodAndDining: parseFloat(this.props.foodAndDining),
+            shopping: parseFloat(this.props.shopping),
+            entertainment: parseFloat(this.props.entertainment),
+            miscellaneous: parseFloat(this.props.miscellaneous),
+            debt: parseFloat(this.props.debt)
         }
+        this.redOrGreen = 'green'
         this.percentOfIncome = this.state.home + this.state.savings + this.state.transportation + this.state.personalCare + this.state.foodAndDining + this.state.shopping + this.state.entertainment + this.state.miscellaneous + this.state.debt
         this.handleChangeIncome = this.handleChangeIncome.bind(this)
         this.showForm = this.showForm.bind(this)
@@ -25,13 +26,20 @@ class BudgetForm extends Component {
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.income !== prevProps.income) {
+            this.setState({income: this.props.income})
+        }
+    }
+
     componentDidMount() {
         this.props.fetchBudget(this.props.user.id)
         this.hiddenOrShow = this.props.formShow ? '' : 'hidden'
     }
 
-    handleChangeIncome(income) {
-        return (e) => this.setState({income: parseInt(e.currentTarget.value)})
+
+    handleChangeIncome(type) {
+        return (e) => this.setState({[type]: parseFloat(e.currentTarget.value)})
     }
 
     showForm() {
@@ -46,7 +54,6 @@ class BudgetForm extends Component {
     }
 
     handleChangeDollars(type) {
-        // let newType = (this.state.income - (this.state[type] * this.state.income) + dollars) / this.state.income
         return (e) => {
             let newType = e.currentTarget.value / this.state.income
             return this.setState({[type]: newType})
@@ -74,7 +81,6 @@ class BudgetForm extends Component {
     }
 
     render() {
-        console.log(this.props.history)
         let home = this.state.home * this.state.income
         let savings = this.state.savings * this.state.income
         let transportation = this.state.transportation * this.state.income
@@ -85,9 +91,12 @@ class BudgetForm extends Component {
         let miscellaneous = this.state.miscellaneous * this.state.income
         let debt = this.state.debt * this.state.income
         let totalDollarsEntered = home + savings + transportation + personalCare + foodAndDining + shopping + entertainment + miscellaneous + debt
-        let percentOfIncome = (totalDollarsEntered / this.state.income) * 100
-        let redOrGreen = percentOfIncome <= 100.1 ? 'green' : 'red' 
-        this.percentOfIncome = percentOfIncome / 100
+        let percentOfIncome
+        if (this.state.income) {
+            percentOfIncome = (totalDollarsEntered / this.state.income) * 100
+            this.redOrGreen = percentOfIncome <= 100 ? 'green' : 'red' 
+            this.percentOfIncome = percentOfIncome / 100
+        }
         return (
             <div>
                 <h3>Set your Budget</h3>
@@ -102,10 +111,10 @@ class BudgetForm extends Component {
                     </form> 
                     <div>
                         <label>Percent of Income: 
-                            <div className={redOrGreen}>{percentOfIncome}</div>
+                            <div className={this.redOrGreen}>{percentOfIncome}</div>
                         </label>
                         <label>Total Dollars Entered: 
-                            <div className={redOrGreen}>{totalDollarsEntered.toFixed(2)}</div>
+                            <div className={this.redOrGreen}>{totalDollarsEntered.toFixed(2)}</div>
                         </label>
                     </div>
                     <form onSubmit={this.handleSubmit}>

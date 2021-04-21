@@ -6,7 +6,6 @@ const validCategory = require('./valid-category')
 
 module.exports = function validateTransactionInput(data) {
   let errors = {};
-  console.log(data)
   data.amount = validNum(data.amount) ? data.amount : '';
   data.category = validCategory(data.category) ? data.category : '';
   data.description = validText(data.description) ? data.description : '';

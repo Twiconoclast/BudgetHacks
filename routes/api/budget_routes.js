@@ -21,10 +21,10 @@ router.patch('/:id', passport.authenticate('jwt', {session: false}),
       }else{
         res.send(result);
       }
-  }
-)
+    }
+  )
 
 
-  })
+})
 
   module.exports = router;

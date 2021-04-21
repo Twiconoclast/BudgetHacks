@@ -14,7 +14,11 @@ module.exports = function validateTransactionInput(data) {
 
 
   if (!Validator.isFloat(data.amount)) {
-    errors.amount = 'Amount field is required';
+    errors.amount = 'Amount field is required and amount should be in the format 10.52';
+  }
+
+  if (data.amount.split(".")[1].length > 2){
+    errors.amount = 'Amount should be in the format 10.52';
   }
 
   if (!Validator.isDate(data.date)) {

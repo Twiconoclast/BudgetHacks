@@ -22,4 +22,16 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
   newTransaction.save().then(transaction => res.json(transaction));
 });
 
+router.get('/user/:user_id', passport.authenticate('jwt', { session: false }), (req, res) => {
+   Transaction.find({user: req.params.user_id})
+        .sort({ date: -1 })
+        .then(transactions => res.json(transactions))
+        .catch(err =>
+            res.status(404).json({ notransactionsfound: 'No transactions found from this user' }
+        )
+    );
+})
+
+
+
 module.exports = router;

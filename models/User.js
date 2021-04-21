@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const BudgetSchema = new Schema({
+                                  income: {type: Number},
                                   home: {type: Number},
                                   savings: {type: Number},
                                   transportation: {type: Number},

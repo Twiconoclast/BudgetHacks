@@ -4,7 +4,8 @@ const validNum = require('./valid-num');
 
 module.exports = function validateBudgetInput(data){
   let errors = {};
-  
+
+  data.income = validNum(data.income) ? data.income : "";
   data.home = validNum(data.home) ? data.home : "";
   data.savings = validNum(data.savings) ? data.savings: "";
   data.transportation = validNum(data.transportation) ? data.transportation: "";
@@ -14,6 +15,10 @@ module.exports = function validateBudgetInput(data){
   data.entertainment = validNum(data.entertainment) ? data.entertainment: "";
   data.miscellaneous = validNum(data.miscellaneous) ? data.miscellaneous: "";
   data.debt = validNum(data.debt) ? data.debt: "";
+
+  if (!Validator.isFloat(data.home, {min: Number(0)})){
+    errors.home = "Income must equal to or greater than 0.00"
+  }
   
   if (!Validator.isFloat(data.home, {min: 0 , max: 1})){
     errors.home = "Home must be a percent between 0% to 100%"

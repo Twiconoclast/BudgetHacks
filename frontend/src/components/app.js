@@ -4,7 +4,7 @@ import { Switch } from 'react-router-dom';
 // Main Navigation
 import NavBarContainer from './nav/navbar_container';
 // Homepage
-import MainPage from './main/main_page'; 
+import MainPage from './main/main_page.jsx'; 
 // Login Form
 import LoginFormContainer from './session/login_form_container';
 // Sign Up Form
@@ -21,7 +21,6 @@ const App = () => (
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
         {/* <ProtectedRoute exact path="/profile" component={} /> */}
         {/* <ProtectedRoute exact path="/dashboard" component={} /> */}
-
     </Switch>
   </div>
 );

@@ -1,0 +1,127 @@
+.logout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h1 {
+        margin-left: 8%;
+        font-size: 40px;
+        font-weight: 700;
+    }
+
+    button {
+        background-color: $blue;
+        color: white;
+        font-weight: 500;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-left: 10px;
+        border-radius: 7px;
+    }
+
+    .button-text {
+        font-size: 22px;
+    }
+
+    button:hover {
+        box-shadow: 0 0 2px 2px $gray;
+    }
+
+    .nav-left {
+        margin-left: 2%;
+       
+        img {
+            height: 60px;
+            width: 325px;
+            margin: 10px;
+        }
+    }
+
+    .nav-right {
+        display: flex;
+        align-items: center;
+        margin-right: 4%;
+
+        button a {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    p.icon {
+        padding-right: 6px;
+        
+        svg {
+            height: 22px;
+            width: 22px;
+            align-self: center;
+            padding-top: 3px;
+        }
+    }
+}
+
+@include mobile {
+
+    .logout {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        button {
+            background-color: $blue;
+            color: white;
+            font-size: 14px;
+            font-weight: 400;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 8px;
+            padding-right: 8px;
+            border-radius: 7px;
+            margin-bottom: 15px;
+            margin-left: 8px;
+            margin-right: 8px;
+        }
+
+        .button-text {
+            font-size: 18px;
+        }
+
+        button:hover {
+            box-shadow: 0 0 2px 2px $gray;
+        }
+
+        .nav-left {
+            margin-left: 0%;
+            img {
+                height: 45px;
+                width: 240px;
+                margin: 10px;
+                margin-top: 20px;
+            }
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            margin-right: 0%;
+
+            button a {
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        p.icon {
+            padding-right: 4px;
+            
+            svg {
+                height: 14px;
+                width: 14px;
+                align-self: center;
+                padding-top: 3px;
+            }
+        }
+    }
+}

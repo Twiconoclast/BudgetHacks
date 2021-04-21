@@ -37,6 +37,7 @@ class BudgetForm extends Component {
         this.hiddenOrShow = this.props.formShow ? '' : 'hidden'
     }
 
+
     handleChangeIncome(type) {
         return (e) => this.setState({[type]: parseFloat(e.currentTarget.value)})
     }

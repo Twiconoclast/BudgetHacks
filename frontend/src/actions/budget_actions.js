@@ -11,7 +11,9 @@ export const fetchBudget = (id) => (dispatch) => (
     BudgetAPIUtils.fetchBudget(id).then((budget) => dispatch(receiveBudget(budget)))
 )
 
-export const updateBudget = (id, budget) => (dispatch) => (
-    BudgetAPIUtils.updateBudget(id, budget).then((budget) => dispatch(receiveBudget(budget)))
-)
+export const updateBudget = (id, budget) => (dispatch) => {
+    console.log(budget);
+    return BudgetAPIUtils.updateBudget(id, budget)
+    .then((budget) => dispatch(receiveBudget(budget)))
+}
 

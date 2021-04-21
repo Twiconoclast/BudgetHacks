@@ -5,6 +5,8 @@ const passport = require('passport');
 const User = require('../../models/User');
 const validateBudgetInput = require('../../validation/budget');
 
+// passport.authenticate('jwt', {session: false}),
+
 
 router.patch('/:id', passport.authenticate('jwt', {session: false}),
   (req, res) => {
@@ -17,14 +19,13 @@ router.patch('/:id', passport.authenticate('jwt', {session: false}),
   User.findByIdAndUpdate({_id: req.params.id}, {budget: req.body}, function(err, result){
       if(err){
         res.send(err);
-      }else{
+      } else{
+        console.log(result)
         res.send(result);
       }
   }
 )
-
-
-  })
+})
 
   router.get('/:id', passport.authenticate('jwt', {session: false}),
   (req, res) => {

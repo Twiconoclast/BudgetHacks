@@ -2,20 +2,22 @@ const Validator = require('validator');
 const validNum = require('./valid-num');
 
 
-module.exports = function validateBudgetInput(data){
+module.exports = function validateBudgetInput(data) {
   let errors = {};
-  data.income = validNum(data.income) ? data.income : "";
-  data.home = validNum(data.home) ? data.home : "";
-  data.savings = validNum(data.savings) ? data.savings: "";
-  data.transportation = validNum(data.transportation) ? data.transportation: "";
-  data.personalCare = validNum(data.personalCare) ? data.personalCare: "";
-  data.foodAndDining = validNum(data.foodAndDining) ? data.foodAndDining: "";
-  data.shopping = validNum(data.shopping) ? data.shopping: "";
-  data.entertainment = validNum(data.entertainment) ? data.entertainment: "";
-  data.miscellaneous = validNum(data.miscellaneous) ? data.miscellaneous: "";
-  data.debt = validNum(data.debt) ? data.debt: "";
 
-  if (!Validator.isFloat(data.income, {min: Number(0)})){
+  data.income = validNum(data.income) ? String(data.income) : "";
+  data.home = validNum(data.home) ? String(data.home) : "";
+  data.savings = validNum(data.savings) ? String(data.savings): "";
+  data.transportation = validNum(data.transportation) ? String(data.transportation): "";
+  data.personalCare = validNum(data.personalCare) ? String(data.personalCare): "";
+  data.foodAndDining = validNum(data.foodAndDining) ? String(data.foodAndDining): "";
+  data.shopping = validNum(data.shopping) ? String(data.shopping): "";
+  data.entertainment = validNum(data.entertainment) ? String(data.entertainment): "";
+  data.miscellaneous = validNum(data.miscellaneous) ? String(data.miscellaneous): "";
+  data.debt = validNum(data.debt) ? String(data.debt): "";
+
+
+  if (!Validator.isFloat(data.income, {min: 0})){
     errors.income = "Income must equal to or greater than 0.00"
   }
   
@@ -58,3 +60,16 @@ module.exports = function validateBudgetInput(data){
     isValid: Object.keys(errors).length === 0
   }
 }
+
+// const data = {debt: 0.08,
+//               entertainment: 0.05,
+//               foodAndDining: 0.15,
+//               home: 0.4,
+//               income: 2000,
+//               miscellaneous: 0.02,
+//               personalCare: 0.05,
+//               savings: 0.12,
+//               shopping: 0.05,
+//               transportation: 0.08}
+
+// validateBudgetInput(data);

@@ -1,5 +1,6 @@
 const validNum = num => {
-  return typeof num === 'number' && num.trim().length > 0;
+  let num_copy = (' ' + num).slice(1);
+  return typeof Number(num_copy) == 'number';
 }
 
 module.exports = validNum;

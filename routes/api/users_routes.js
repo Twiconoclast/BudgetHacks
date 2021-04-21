@@ -7,7 +7,7 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 const validateSignupInput = require('../../validation/signup');
 const validateLoginInput = require('../../validation/login');
-const validateBudgetInput = require('../../validation/budget')
+
 
 router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 

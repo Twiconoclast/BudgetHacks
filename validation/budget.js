@@ -4,59 +4,50 @@ const validNum = require('./valid-num');
 
 module.exports = function validateBudgetInput(data){
   let errors = {};
-
-  data.budget.home = validNum(data.budget.home) ? data.budget.home: "";
-  data.budget.savings = validNum(data.budget.savings) ? data.budget.savings: "";
-  data.budget.transportation = validNum(data.budget.transportation) ? data.budget.transportation: "";
-  data.budget.personalCare = validNum(data.budget.personalCare) ? data.budget.personalCare: "";
-  data.budget.foodAndDining = validNum(data.budget.foodAndDining) ? data.budget.foodAndDining: "";
-  data.budget.shopping = validNum(data.budget.shopping) ? data.budget.shopping: "";
-  data.budget.entertainment = validNum(data.budget.entertainment) ? data.budget.entertainment: "";
-  data.budget.miscellaneous = validNum(data.budget.miscellaneous) ? data.budget.miscellaneous: "";
-  data.budget.debt = validNum(data.budget.debt) ? data.budget.debt: "";
-
-  const total = []
-
-  if (Validator.isFloat(data.budget.home, {min: 0 , max: 1})){
-    total.push(data.budget.home)
-    errors.budget = "Must be a decimal from 0 to 1"
-  }
-  if (Validator.isFloat(data.budget.savings, {min: 0 , max: 1})){
-    total.push(data.budget.savings)
-    errors.budget = "Must be a decimal from 0 to 1"
-  }
-  if (Validator.isFloat(data.budget.transportation, {min: 0 , max: 1})){
-    total.push(data.budget.transportation)
-    errors.budget = "Must be a decimal from 0 to 1"
-  }
-  if (Validator.isFloat(data.budget.personalCare, {min: 0 , max: 1})){
-    total.push(data.budget.personalCare)
-    errors.budget = "Must be a decimal from 0 to 1"
   
-  }if (Validator.isFloat(data.budget.foodAndDining, {min: 0 , max: 1})){
-    total.push(data.budget.foodAndDining)
-    errors.budget = "Must be a decimal from 0 to 1"
+  data.home = validNum(data.home) ? data.home : "";
+  data.savings = validNum(data.savings) ? data.savings: "";
+  data.transportation = validNum(data.transportation) ? data.transportation: "";
+  data.personalCare = validNum(data.personalCare) ? data.personalCare: "";
+  data.foodAndDining = validNum(data.foodAndDining) ? data.foodAndDining: "";
+  data.shopping = validNum(data.shopping) ? data.shopping: "";
+  data.entertainment = validNum(data.entertainment) ? data.entertainment: "";
+  data.miscellaneous = validNum(data.miscellaneous) ? data.miscellaneous: "";
+  data.debt = validNum(data.debt) ? data.debt: "";
+  
+  if (!Validator.isFloat(data.home, {min: 0 , max: 1})){
+    errors.home = "Home must be a percent between 0% to 100%"
   }
-  if (Validator.isFloat(data.budget.shopping, {min: 0 , max: 1})){
-    total.push(data.budget.shopping)
-    errors.budget = "Must be a decimal from 0 to 1"
+  if (!Validator.isFloat(data.savings, {min: 0 , max: 1})){
+    errors.savings = "Saving must be a percent between 0% to 100%"
   }
-  if (Validator.isFloat(data.budget.personalCare, {min: 0 , max: 1})){
-    total.push(data.budget.personalCare)
-    errors.budget = "Must be a decimal from 0 to 1"
+  if (!Validator.isFloat(data.transportation, {min: 0 , max: 1})){
+    errors.transportation = "Transportation must be a percent between 0% to 100%"
   }
-  if (Validator.isFloat(data.budget.miscellaneous, {min: 0 , max: 1})){
-    total.push(data.budget.miscellaneous)
-    errors.budget = "Must be a decimal from 0 to 1"
+  if (!Validator.isFloat(data.personalCare, {min: 0 , max: 1})){
+    errors.personalCare = "Personal Care must be a percent between 0% to 100%"
+  
+  }if (!Validator.isFloat(data.foodAndDining, {min: 0 , max: 1})){
+    errors.foodAndDining = "Food and Dining must be a percent between 0% to 100%"
   }
-  if (Validator.isFloat(data.budget.debt, {min: 0 , max: 1})){
-    total.push(data.budget.debt)
-    errors.budget = "Must be a decimal from 0 to 1"
+  if (!Validator.isFloat(data.shopping, {min: 0 , max: 1})){
+    errors.shopping = "Shopping must be a percent between 0% to 100%"
   }
+  if (!Validator.isFloat(data.entertainment, {min: 0 , max: 1})){
+    errors.entertainment = "Entertainment must be a percent between 0% to 100%"
+  }
+  if (!Validator.isFloat(data.miscellaneous, {min: 0 , max: 1})){
+    errors.miscellaneous = "Miscellaneous must be a percent between 0% to 100%"
+  }
+  if (!Validator.isFloat(data.debt, {min: 0 , max: 1})){
+    errors.debt = "Debt must be a percent between 0% to 100%"
+  }
+  
+  let total = Number(data.entertainment) + Number(data.debt) + Number(data.miscellaneous) + Number(data.personalCare) + Number(data.shopping) + Number(data.foodAndDining) + Number(data.transportation) + Number(data.savings) + Number(data.home)
 
-  if (total.reduce((amt, acc)=> amt + acc) === 1){
-    errors.budget = 'Total needs to be 1'
-  }
+  if (total !== 1){
+    errors.budget = "Total needs to be 100%";
+  };
 
   return {
     errors,

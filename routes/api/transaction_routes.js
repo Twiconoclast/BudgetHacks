@@ -3,6 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 const Transaction = require('../../models/Transaction');
 const validateTransactionInput = require('../../validation/transaction');
+const User = require('../../models/User');
 
 router.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
   const { errors, isValid } = validateTransactionInput(req.body)
@@ -10,15 +11,19 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
   if(!isValid){
     return res.status(400).json(errors);
   }
-  
+  console.log(req.user._id);
   const newTransaction = new Transaction({
-    user: req.user.id,
+    user: req.user._id,
     date: req.body.date,
     amount: req.body.amount,
     category: req.body.category,
     description: req.body.description
   });
-
+  let transAmt = Number(req.body.amount);
+  User.findById(req.user._id).then(user =>{
+    user.balance -= transAmt;
+    user.save();
+  })
   newTransaction.save().then(transaction => res.json(transaction));
 });
 

@@ -9,7 +9,7 @@ import MainPage from './main/main_page.jsx';
 import LoginFormContainer from './session/login_form_container';
 // Sign Up Form
 import SignupFormContainer from './session/signup_form_container';
-// import '../App.scss' from '';
+import '../App.scss';
 import BudgetShowContainer from './budget/budget_show_container'
 import EditBudgetContainer from './budget/edit_budget_container'
 

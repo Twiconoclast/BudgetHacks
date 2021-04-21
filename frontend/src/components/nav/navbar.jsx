@@ -35,9 +35,9 @@ class NavBar extends React.Component {
         return (
             <nav className="logout">
                 <div className='nav-left'>
-                    <div class="dropdown">
-                        <button onclick="myFunction()" class="dropbtn"><GiHamburgerMenu/></button>
-                        <div id="myDropdown" class="dropdown-content">
+                    <div className="dropdown">
+                        <button onClick={this.myFunction} className="dropbtn"><GiHamburgerMenu/></button>
+                        <div id="myDropdown" className="dropdown-content">
                             <a href="#">Budget</a>
                             <a href="#">Transactions</a>
                             <a href="#">Link 3</a>

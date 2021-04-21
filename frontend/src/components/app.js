@@ -9,7 +9,9 @@ import MainPage from './main/main_page';
 import LoginFormContainer from './session/login_form_container';
 // Sign Up Form
 import SignupFormContainer from './session/signup_form_container';
-import '../App.scss';
+// import '../App.scss' from '';
+import BudgetShowContainer from './budget/budget_show_container'
+import EditBudgetContainer from './budget/edit_budget_container'
 
 
 const App = () => (
@@ -21,7 +23,8 @@ const App = () => (
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
         {/* <ProtectedRoute exact path="/profile" component={} /> */}
         {/* <ProtectedRoute exact path="/dashboard" component={} /> */}
-
+        <ProtectedRoute exact path="/budget" component={BudgetShowContainer} />
+        <ProtectedRoute exact path="/budget/edit" component={EditBudgetContainer} />
     </Switch>
   </div>
 );

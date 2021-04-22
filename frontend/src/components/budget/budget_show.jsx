@@ -10,6 +10,12 @@ class BudgetShow extends Component {
         this.props.fetchBudget(this.props.user.id)
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.income !== prevProps.income) {
+            this.setState({income: this.props.income})
+        }
+    }
+
     render() {
         return (
             <div>

@@ -19,7 +19,7 @@ class BudgetForm extends Component {
         this.redOrGreen = 'green'
         this.percentOfIncome = this.state.home + this.state.savings + this.state.transportation + this.state.personalCare + this.state.foodAndDining + this.state.shopping + this.state.entertainment + this.state.miscellaneous + this.state.debt
         this.handleChangeIncome = this.handleChangeIncome.bind(this)
-        this.showForm = this.showForm.bind(this)
+        // this.showForm = this.showForm.bind(this)
         this.calculate = this.calculate.bind(this)
         this.handleChangeDollars = this.handleChangeDollars.bind(this)
         this.handleChangePercent = this.handleChangePercent.bind(this)
@@ -28,13 +28,14 @@ class BudgetForm extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (this.props.income !== prevProps.income) {
+            this.hiddenOrShow = this.props.formShow ? 'show' : 'hidden'
             this.setState({income: this.props.income})
         }
     }
 
     componentDidMount() {
         this.props.fetchBudget(this.props.user.id)
-        this.hiddenOrShow = this.props.formShow ? '' : 'hidden'
+        this.hiddenOrShow = this.props.formShow ? 'show' : 'hidden'
     }
 
 
@@ -42,17 +43,16 @@ class BudgetForm extends Component {
         return (e) => this.setState({[type]: parseFloat(e.currentTarget.value)})
     }
 
-    showForm() {
-        console.log("in the show form")
-        if (this.props.formShow === 'hidden') {
-            this.hiddenOrShow = ''
-            console.log(this.hiddenOrShow)
-        } 
-    }
+    // showForm(e) {
+    //     e.preventDefault()
+    //     this.hiddenOrShow = this.state.income ? 'show' : 'hidden'
+    //     this.setState(this.state)
+    // }
 
     calculate(e) {
         e.preventDefault();
-        this.showForm();
+        this.hiddenOrShow = this.state.income ? 'show' : 'hidden'
+        this.setState(this.state)
     }
 
     handleChangeDollars(type) {

@@ -22,10 +22,6 @@ class TransactionIndex extends React.Component{
     }
   }
 
-  // toggleEditForm(e){
-  //   e.preventDefault()
-  //   this.state.editFormShow ? 'hidden' : ''
-  // }
 
   toggleCreateForm(e){
     this.setState({createFormShow : !this.state.createFormShow})

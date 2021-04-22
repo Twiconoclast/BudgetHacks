@@ -1,6 +1,7 @@
 import React from 'react'
 import TransactionShowContainer from './transaction_show_container'
 import CreateTransactionContainer from './create_transaction_container'
+import VerticalBar from '../chart/chart.js';
 
 class TransactionIndex extends React.Component{
   constructor(prop){
@@ -43,6 +44,7 @@ class TransactionIndex extends React.Component{
     }
     return (
       <div>
+        < VerticalBar />
         <h1>Transaction List</h1>
         <p>Current Balance : ${this.props.balance}</p>
         <button onClick={this.toggleCreateForm}>+</button>

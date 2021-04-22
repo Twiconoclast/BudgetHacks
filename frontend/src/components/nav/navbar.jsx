@@ -16,6 +16,7 @@ class NavBar extends React.Component {
     this.getLinks = this.getLinks.bind(this);
   }
 
+
   handleDemo(e) {
       e.preventDefault();
        this.props.login( { username: 'DemoUser', password: '123456'} );
@@ -26,23 +27,23 @@ class NavBar extends React.Component {
       this.props.logout();
   }
 
-    myFunction() {
-        document.getElementById("myDropdown").classList.toggle("show");
-    }
+    // myFunction() {
+    //     document.getElementById("myDropdown").classList.toggle("show");
+    // }
 
   getLinks() {
       if (this.props.loggedIn) {
         return (
             <nav className="logout">
                 <div className='nav-left'>
-                    <div className="dropdown">
+                    {/* <div className="dropdown">
                         <button onClick={this.myFunction} className="dropbtn"><GiHamburgerMenu/></button>
                         <div id="myDropdown" className="dropdown-content">
                             <a href="#">Budget</a>
                             <a href="#">Transactions</a>
                             <a href="#">Link 3</a>
                         </div>
-                    </div>
+                    </div> */}
                     <Link to="/" className="header-link">
                     <img src={logo} alt="BudgetHacks Logo"/>
                     </Link>

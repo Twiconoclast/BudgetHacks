@@ -1,7 +1,7 @@
 import TransactionShow from './transaction_show'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
-import {fetchTransaction} from '../../actions/transaction_actions'
+import {getTransaction} from '../../actions/transaction_actions'
 
 const mSTP = (state, ownProps) => ({
     user: state.session.user,
@@ -10,7 +10,7 @@ const mSTP = (state, ownProps) => ({
 })
 
 const mDTP = dispatch => ({
-    fetchTransaction: (transactionId) => dispatch(fetchTransaction(transactionId)), 
+    getTransaction: (transactionId) => dispatch(getTransaction(transactionId)), 
 })
 
 export default withRouter(connect(mSTP, mDTP)(TransactionShow))

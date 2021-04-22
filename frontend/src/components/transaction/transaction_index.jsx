@@ -6,11 +6,13 @@ class TransactionIndex extends React.Component{
   constructor(prop){
     super(prop)
     this.state = {createFormShow: false, editFormShow: false}
-    this.toggleEditForm = this.toggleEditForm.bind(this)
+    // this.toggleEditForm = this.toggleEditForm.bind(this)
+    this.toggleCreateForm = this.toggleCreateForm.bind(this)
+
   }
 
   componentDidMount(){
-    fetchTransactions(this.props.userId)
+    this.props.fetchTransactions(this.props.user.id)
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -19,10 +21,10 @@ class TransactionIndex extends React.Component{
     }
   }
 
-  toggleEditForm(e){
-    e.preventDefault()
-    this.editFormShow ? 'hidden' : ''
-  }
+  // toggleEditForm(e){
+  //   e.preventDefault()
+  //   this.state.editFormShow ? 'hidden' : ''
+  // }
 
   toggleCreateForm(e){
     this.setState({createFormShow : !this.state.createFormShow})
@@ -33,8 +35,8 @@ class TransactionIndex extends React.Component{
     if (this.props.transactions){
       tList = Object.values(this.props.transactions).map((trans)=>{
         return (
-          <li key={trans.id}>
-            <TransactionShowContainer transaction={trans}/>
+          <li key={trans._id}>
+            <TransactionShowContainer key={trans._id} transaction={trans}/>
           </li>
         )
       })

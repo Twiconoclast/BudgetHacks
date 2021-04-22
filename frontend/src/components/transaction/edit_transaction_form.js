@@ -51,7 +51,7 @@ class EditTransactionForm extends React.Component{
             </select>
           </label>
           <label>Description:
-            <textarea onChange={this.handleChange('description')} name="description" id="" cols="30" rows="10" value={this.state.description}></textarea>
+            <textarea onChange={this.handleChange('description')} name="description" value={this.state.description}></textarea>
           </label>
           <button>Edit Transaction</button>
         </form>

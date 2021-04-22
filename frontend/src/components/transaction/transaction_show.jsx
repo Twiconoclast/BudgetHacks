@@ -1,5 +1,5 @@
 import React from 'react'
-import EditTransactionForm from './edit_transaction_form'
+import EditTransactionFormContainer from './edit_transaction_form_container'
 
 class TransactionShow extends React.Component{
   constructor(props){
@@ -10,7 +10,7 @@ class TransactionShow extends React.Component{
     this.toggleEditForm = this.toggleEditForm.bind(this)
   }
   componentDidMount(){
-    this.props.fetchTransaction(this.props.transaction.id)
+    this.props.getTransaction(this.props.transaction._id)
   }
 
   toggleEditForm(e){
@@ -36,7 +36,7 @@ class TransactionShow extends React.Component{
           </div>
         </div>
         <div className={this.state.editFormShow ? '' : 'hidden'}>
-          <EditTransactionForm toggleEditForm={this.toggleEditForm} transaction={this.props.transaction}/>
+          <EditTransactionFormContainer toggleEditForm={this.toggleEditForm} transaction={this.props.transaction}/>
         </div>
       </div>
     )

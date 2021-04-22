@@ -34,6 +34,7 @@ class TransactionShow extends React.Component{
           <div>Description: 
             {this.props.transaction.description}
           </div>
+          <button onClick={this.toggleEditForm}>Edit Transaction</button>
         </div>
         <div className={this.state.editFormShow ? '' : 'hidden'}>
           <EditTransactionFormContainer toggleEditForm={this.toggleEditForm} transaction={this.props.transaction}/>

@@ -16,7 +16,7 @@ router.patch('/:id', passport.authenticate('jwt', {session: false}),
     return res.status(400).json(errors);
   }
 
-  User.findByIdAndUpdate({_id: req.params.id}, {budget: req.body}, function(err, result){
+  User.findByIdAndUpdate({_id: req.params.id}, {budget: req.body}, {new: true}, function(err, result){
       if(err){
         res.send(err);
       } else{

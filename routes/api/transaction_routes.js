@@ -84,7 +84,8 @@ router.patch('/:id', passport.authenticate('jwt', {session: false}), (req, res) 
 
   Transaction.findById(req.params.id).then(transaction =>{
     if(req.user._id.equals(transaction.user)){
-      Transaction.findByIdAndUpdate(req.params.id, req.body, function(err, result){
+      Transaction.findByIdAndUpdate(req.params.id, req.body, {new: true},
+      function(err, result){
       if(err){
         res.send(err);
       } else {

@@ -15,6 +15,7 @@ class CreateTransactionForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault()
+    console.log(this.state)
     this.props.createTransaction(this.state)
     this.setState(
       { user: this.props.user.id,
@@ -26,7 +27,12 @@ class CreateTransactionForm extends React.Component{
 
   handleChange(field){
     return((e)=>{
-      this.setState({[field]: e.currentTarget.value})
+      let value = e.currentTarget.value
+      if (field === 'amount') {
+        value = Number(e.currentTarget.value)
+      }
+      console.log(typeof value)
+      this.setState({[field]: value})
     })
   }
   render(){
@@ -37,10 +43,11 @@ class CreateTransactionForm extends React.Component{
             <input onChange={this.handleChange('date')} type="date" name='date' value={this.state.date}/>
           </label>
           <label>Amount:
-            <input onChange={this.handleChange('amount')} type="text" value={this.state.amount} placeholder='19.99'/>
+            <input onChange={this.handleChange('amount')} type="number" value={this.state.amount} placeholder='19.99'/>
           </label>
           <label>Category:
-            <select onChange={this.handleChange('category')} name="category" >
+            <select defaultValue='' onChange={this.handleChange('category')} name="category" >
+              <option value='' disabled>---select---</option>
               <option value="income">Income</option>
               <option value="home">Home</option>
               <option value="savings">Savings</option>

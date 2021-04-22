@@ -6,7 +6,7 @@ import {fetchTransactions, deleteTransaction} from '../../actions/transaction_ac
 const mSTP = state => ({
     user: state.session.user,
     transactions: state.transactions,
-    balance: state.session.user.balance
+    balance: state.user.balance
 })
 
 const mDTP = dispatch => ({

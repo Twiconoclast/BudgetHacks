@@ -6,9 +6,10 @@ class EditTransactionForm extends React.Component{
     super(props)
     this.state = {user: this.props.user.id,
                   date: this.props.transaction.date,
-                  amount: this.props.transaction.amount, 
+                  amount: Number(this.props.transaction.amount), 
                   category: this.props.transaction.category, 
-                  description:this.props.transaction.description
+                  description:this.props.transaction.description,
+                  _id: this.props.transaction._id
                 }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -16,19 +17,27 @@ class EditTransactionForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault()
+    console.log(this.state)
     this.props.updateTransaction(this.state)
-    this.props.toggleEditForm()
+      // .then(() => this.props.getTransaction(this.props.transaction._id))
+    // this.props.toggleEditForm()
   }
 
   handleChange(field){
     return((e)=>{
-      this.setState({[field]: e.currentTarget.value})
+      let value = e.currentTarget.value
+      if (field === 'amount') {
+        value = Number(e.currentTarget.value)
+      }
+      this.setState({[field]: value})
     })
   }
   render(){
+    let defaultCat = this.state.category
+    let defaultDate = this.state.date
     return(
       <div>
-        <button onClick={()=>this.props.toggleEditForm}>x</button>
+        <button onClick={this.props.toggleEditForm}>x</button>
         <form onSubmit={this.handleSubmit}>
           <label>Date:
             <input onChange={this.handleChange('date')} type="date" name='date' value={this.state.date}/>
@@ -37,7 +46,7 @@ class EditTransactionForm extends React.Component{
             <input onChange={this.handleChange('amount')} type="number" value={this.state.amount}/>
           </label>
           <label>Category:
-            <select onChange={this.handleChange('category')} name="category" >
+            <select defaultValue={defaultCat} onChange={this.handleChange('category')} name="category" >
               <option value="income">Income</option>
               <option value="home">Home</option>
               <option value="savings">Savings</option>
@@ -53,7 +62,7 @@ class EditTransactionForm extends React.Component{
           <label>Description:
             <textarea onChange={this.handleChange('description')} name="description" value={this.state.description}></textarea>
           </label>
-          <button>Edit Transaction</button>
+          <button type='submit'>Edit Transaction</button>
         </form>
         <button onClick={()=>this.props.deleteTransaction}>Delete</button>
       </div>

@@ -138,6 +138,7 @@ class BudgetForm extends Component {
                             </div>
                             </label>
                             <label className='budget-label'>Debt: 
+                            <div className='budget-input-columns'>
                                 <div className='budget-input-container'><span>$</span>
                                     <input className='budget-input' type='number' value={debt} onChange={this.handleChangeDollars('debt')}  />
                                 </div>
@@ -145,8 +146,10 @@ class BudgetForm extends Component {
                                     <input className='budget-input' type='number' value={this.state.debt* 100} onChange={this.handleChangePercent('debt')}  />
                                     <span>%</span>
                                 </div>
+                            </div>
                             </label>
-                            <label className='budget-label'>Transportation: 
+                            <label className='budget-label'>Transportation:
+                            <div className='budget-input-columns'>
                                 <div className='budget-input-container'><span>$</span>
                                     <input className='budget-input' type='number' value={transportation} onChange={this.handleChangeDollars('transportation')}  />
                                 </div>
@@ -154,8 +157,10 @@ class BudgetForm extends Component {
                                     <input className='budget-input' type='number' value={this.state.transportation* 100} onChange={this.handleChangePercent('transportation')}  />
                                     <span>%</span>
                                 </div>
+                            </div> 
                             </label>
                             <label className='budget-label'>Home: 
+                            <div className='budget-input-columns'>
                                 <div className='budget-input-container'><span>$</span>
                                     <input className='budget-input' type='number' value={home} onChange={this.handleChangeDollars('home')}  />
                                 </div>
@@ -163,8 +168,10 @@ class BudgetForm extends Component {
                                     <input className='budget-input' type='number' value={this.state.home* 100} onChange={this.handleChangePercent('home')}  />
                                     <span>%</span>
                                 </div>
+                            </div>
                             </label>
                             <label className='budget-label'>Personal Care: 
+                            <div className='budget-input-columns'>
                                 <div className='budget-input-container'> <span>$</span>
                                     <input className='budget-input' type='number' value={personalCare} onChange={this.handleChangeDollars('personalCare')}  />
                                 </div>
@@ -172,8 +179,10 @@ class BudgetForm extends Component {
                                     <input className='budget-input' type='number' value={this.state.personalCare* 100} onChange={this.handleChangePercent('personalCare')}  />
                                     <span>%</span>
                                 </div>
+                            </div>
                             </label>
                             <label className='budget-label'>Food And Dining: 
+                            <div className='budget-input-columns'>
                                 <div className='budget-input-container'><span>$</span>
                                     <input className='budget-input' type='number' value={foodAndDining} onChange={this.handleChangeDollars('foodAndDining')}  />
                                 </div>
@@ -181,8 +190,10 @@ class BudgetForm extends Component {
                                     <input className='budget-input' type='number' value={this.state.foodAndDining* 100} onChange={this.handleChangePercent('foodAndDining')}  />
                                     <span>%</span>
                                 </div>
+                            </div>
                             </label>
                             <label className='budget-label'>Shopping: 
+                            <div className='budget-input-columns'>
                                 <div className='budget-input-container'><span>$</span>
                                     <input className='budget-input' type='number' value={shopping} onChange={this.handleChangeDollars('shopping')}  />
                                 </div>
@@ -190,8 +201,10 @@ class BudgetForm extends Component {
                                     <input className='budget-input' type='number' value={this.state.shopping* 100} onChange={this.handleChangePercent('shopping')}  />
                                     <span>%</span>
                                 </div>
+                            </div>
                             </label>
-                            <label className='budget-label'>Entertainment: 
+                            <label className='budget-label'>Entertainment:
+                            <div className='budget-input-columns'>
                                 <div className='budget-input-container'><span>$</span>
                                     <input className='budget-input' type='number' value={entertainment} onChange={this.handleChangeDollars('entertainment')}  />
                                 </div>
@@ -199,8 +212,10 @@ class BudgetForm extends Component {
                                     <input className='budget-input' type='number' value={this.state.entertainment* 100} onChange={this.handleChangePercent('entertainment')}  />
                                     <span>%</span>
                                 </div>
+                            </div>
                             </label>
                             <label className='budget-label'>Miscellaneous: 
+                            <div className='budget-input-columns'>
                                 <div className='budget-input-container'><span>$</span>
                                     <input className='budget-input' type='number' value={miscellaneous} onChange={this.handleChangeDollars('miscellaneous')}  />
                                 </div>
@@ -208,6 +223,7 @@ class BudgetForm extends Component {
                                     <input className='budget-input' type='number' value={this.state.miscellaneous* 100} onChange={this.handleChangePercent('miscellaneous')}  />
                                     <span>%</span>
                                 </div>
+                            </div>
                             </label>
                         </div>
                         <div className='button-holder'>

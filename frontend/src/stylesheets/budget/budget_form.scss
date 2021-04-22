@@ -14,6 +14,15 @@
 
     .budget-forms {
         width: 50%;
+
+        h4 {
+            color: $dark-green;
+            margin-top: 10px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 40px;
+        }
     }
 
     .budget-heading-container {
@@ -26,6 +35,27 @@
         font-weight: 500;
         margin-top: 5%;
         margin-bottom: 5%;
+    }
+
+    .budget-income-container {
+        display: flex;
+        justify-content: space-around;
+        font-size: 26px;
+        align-content: center;
+        margin-bottom: 30px;
+
+        .span-income-label {
+            padding: 6px;
+            font-size: 24px;
+        }
+
+        .span-sign-label {
+            font-size: 28px;
+        }
+
+        .budget-input {
+            margin: 0;
+        }
     }
 
     .budget-input-columns {
@@ -44,6 +74,7 @@
         padding: 4%;
         padding-left: 10%;
         padding-right: 10%;
+        margin-bottom: 5%;
 
         .budget-label {
             font-size: 22px;
@@ -107,13 +138,13 @@
 
 
 @include mobile {
-    .session-form-container {
+    .budget-form-container {
         display: flex;
         justify-content: center;
         background-color: $off-white;
         padding: 3%;
 
-        .login-form {
+        .budget-form {
             background-color: white;
             border: 1px solid $gray;
             border-radius: 7px;
@@ -122,24 +153,9 @@
             padding-left: 10%;
             padding-right: 10%;
 
-            .login-label {
+            .budget-label {
                 font-size: 18px;
                 font-weight: 400;
-            }
-
-            h2 {
-                text-align: center;
-                font-size: 34px;
-                font-weight: 600;
-            }
-
-            h4 {
-                color: $dark-green;
-                margin-top: 10px;
-                text-align: center;
-                font-size: 18px;
-                font-weight: 500;
-                margin-bottom: 25px;
             }
 
             input {

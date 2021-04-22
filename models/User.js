@@ -34,4 +34,4 @@ const UserSchema = new Schema({
 {timestamps: true})
 
 module.exports = User = mongoose.model('User', UserSchema);
-// module.exports = Budget = mongoose.model('Budget', BudgetSchema);
+

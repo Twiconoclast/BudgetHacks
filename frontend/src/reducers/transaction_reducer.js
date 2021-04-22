@@ -8,15 +8,17 @@ const transactionReducer = (state = {}, action) => {
     let newState = Object.assign({}, state)
     switch(action.type) {
         case RECEIVE_TRANSACTIONS: {
-            newState = action.transactions.data;
+            action.transactions.data.forEach( trans => {
+                newState[trans._id] = trans;
+            })
             return newState
         }
         case RECEIVE_TRANSACTION: {
-            newState[action.transaction.data.id] = action.transaction.data;
+            newState[action.transaction.data._id] = action.transaction.data;
             return newState
         }
         case DELETE_TRANSACTION: {
-            delete newState[action.transaction.data.id];
+            delete newState[action.transactionId];
             return newState
         }
         case RECEIVE_USER_LOGOUT: {

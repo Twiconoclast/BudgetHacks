@@ -16,7 +16,7 @@ export const createTransaction = (transaction) => {
   return axios.post('/api/transactions/', transaction);
 };
 
-export const updateTransaction = (id, transaction) => {
-  return axios.patch(`/api/transactions/${id}`, transaction);
+export const updateTransaction = (transaction) => {
+  return axios.patch(`/api/transactions/${transaction._id}`, transaction);
 };
 

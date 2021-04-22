@@ -14,7 +14,7 @@ const receiveTransaction = (transaction) => ({
     transaction
 })
 
-const deleteTransaction = (transactionId) => ({
+const removeTransaction = (transactionId) => ({
     type: DELETE_TRANSACTION,
     transactionId
 })
@@ -24,14 +24,14 @@ export const fetchTransactions = (userId) => (dispatch) => (
     .then((transactions) => dispatch(receiveTransactions(transactions)))
 )
 
-export const getTransaction = (userId) => (dispatch) => (
-    TransactionAPIUtils.getTransaction(userId)
+export const getTransaction = (transactionId) => (dispatch) => (
+    TransactionAPIUtils.getTransaction(transactionId)
     .then((transaction) => dispatch(receiveTransaction(transaction)))
 )
 
 export const deleteTransaction = (transactionId) => (dispatch) => (
     TransactionAPIUtils.deleteTransaction(transactionId)
-    .then((transaction) => dispatch(deleteTransaction(transaction.id)))
+    .then(() => dispatch(removeTransaction(transactionId)))
 )
 
 export const createTransaction = (transaction) => (dispatch) => (
@@ -39,8 +39,9 @@ export const createTransaction = (transaction) => (dispatch) => (
     .then((transaction) => dispatch(receiveTransaction(transaction)))
 )
 
-export const updateTransaction = (id, transaction) => (dispatch) => (
-    TransactionAPIUtils.updateTransaction(id, transaction)
+export const updateTransaction = (transaction) => (dispatch) => {
+    return TransactionAPIUtils.updateTransaction(transaction)
     .then((transaction) => dispatch(receiveTransaction(transaction)))
-)
+}
+
 

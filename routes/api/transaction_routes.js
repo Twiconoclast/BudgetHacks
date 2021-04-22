@@ -87,11 +87,14 @@ router.patch('/:id', passport.authenticate('jwt', {session: false}), (req, res) 
       Transaction.findByIdAndUpdate(req.params.id, req.body, function(err, result){
       if(err){
         res.send(err);
-      }else{
+      } else {
         res.send(result);
       }
-    })
-    }else{
+     })}
+      // Transaction.findByIdAndUpdate(req.params.id, req.body)
+      //   .then(result =>  res.send(result))
+   
+     else {
       res.status(404).json({ notransactionfound: 'This transaction cannot be updated' })
     }
   })

@@ -12,6 +12,7 @@ import SignupFormContainer from './session/signup_form_container';
 import '../App.scss';
 import BudgetShowContainer from './budget/budget_show_container'
 import EditBudgetContainer from './budget/edit_budget_container'
+import TransactionIndexContainer from './transaction/transaction_index_container';
 
 
 const App = () => (
@@ -22,7 +23,7 @@ const App = () => (
         <AuthRoute exact path="/login" component={LoginFormContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
         {/* <ProtectedRoute exact path="/profile" component={} /> */}
-        {/* <ProtectedRoute exact path="/dashboard" component={} /> */}
+        <ProtectedRoute exact path="/dashboard" component={TransactionIndexContainer} />
         <ProtectedRoute exact path="/budget" component={BudgetShowContainer} />
         <ProtectedRoute exact path="/budget/edit" component={EditBudgetContainer} />
     </Switch>

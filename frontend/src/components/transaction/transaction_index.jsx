@@ -1,5 +1,6 @@
 import React from 'react'
-
+import TransactionShowContainer from './transaction_show_container'
+import CreateTransactionContainer from './create_transaction_container'
 
 class TransactionIndex extends React.Component{
   constructor(prop){
@@ -33,7 +34,7 @@ class TransactionIndex extends React.Component{
       tList = Object.values(this.props.transactions).map((trans)=>{
         return (
           <li key={trans.id}>
-            <TransactionShowContainer />
+            <TransactionShowContainer transaction={trans}/>
           </li>
         )
       })

@@ -1,27 +1,23 @@
 import React from 'react'
 
-class CreateTransactionForm extends React.Component{
+
+class EditTransactionForm extends React.Component{
   constructor(props){
     super(props)
-    this.state = { user: this.props.user.id,
-                    date: '',
-                    amount: '', 
-                    category: '', 
-                    description:''}
-
+    this.state = {user: this.props.user.id,
+                  date: this.props.transaction.date,
+                  amount: this.props.transaction.amount, 
+                  category: this.props.transaction.category, 
+                  description:this.props.transaction.description
+                }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
 
   handleSubmit(e){
     e.preventDefault()
-    this.props.createTransaction(this.state)
-    this.setState(
-      { user: this.props.user.id,
-      date: '',
-      amount: '', 
-      category: '', 
-      description:''})
+    this.props.updateTransaction(this.state)
+    this.props.toggleEditForm()
   }
 
   handleChange(field){
@@ -32,12 +28,13 @@ class CreateTransactionForm extends React.Component{
   render(){
     return(
       <div>
+        <button onClick={()=>this.props.toggleEditForm}>x</button>
         <form onSubmit={this.handleSubmit}>
           <label>Date:
             <input onChange={this.handleChange('date')} type="date" name='date' value={this.state.date}/>
           </label>
           <label>Amount:
-            <input onChange={this.handleChange('amount')} type="text" value={this.state.amount} placeholder='19.99'/>
+            <input onChange={this.handleChange('amount')} type="number" value={this.state.amount}/>
           </label>
           <label>Category:
             <select onChange={this.handleChange('category')} name="category" >
@@ -51,16 +48,16 @@ class CreateTransactionForm extends React.Component{
               <option value="personalCare">Personal Care</option>
               <option value="miscellaneous">Miscellaneous</option>
               <option value="debt">Debt</option>
-
             </select>
           </label>
           <label>Description:
             <textarea onChange={this.handleChange('description')} name="description" id="" cols="30" rows="10" value={this.state.description}></textarea>
           </label>
-          <button>Submit Transaction</button>
+          <button>Edit Transaction</button>
         </form>
+        <button onClick={()=>this.props.deleteTransaction}>Delete</button>
       </div>
     )
   }
 }
-export default CreateTransactionForm
+export default EditTransactionForm

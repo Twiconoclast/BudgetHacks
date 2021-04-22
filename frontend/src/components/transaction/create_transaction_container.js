@@ -1,7 +1,7 @@
 import CreateTransactionForm from './create_transaction_form'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
-// import {createTransaction} from '../../actions/transaction_actions'
+import {createTransaction} from '../../actions/transaction_actions'
 
 const mSTP = (state, ownProps) => ({
   user: state.session.user,

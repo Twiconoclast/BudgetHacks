@@ -26,10 +26,12 @@ router.post("/signup", (req, res) => {
         return res.status(400).json(errors);
       } else {
         const newUser = new User({
+          points: 500,
           username: req.body.username,
           balance: req.body.balance,
           password: req.body.password,
           budget: {
+            editCounter: 0,
             income: 0,
             home: 0,
             savings: 0,
@@ -76,7 +78,8 @@ router.post("/signup", (req, res) => {
         .then(isMatch => {
           if (isMatch) {
           const payload = {id: user.id, name: user.name};
-
+          user.points += 10;
+          user.save();
           jwt.sign(
             payload,
             keys.secretOrKey,

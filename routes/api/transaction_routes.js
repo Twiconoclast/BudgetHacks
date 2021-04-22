@@ -11,7 +11,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
   if(!isValid){
     return res.status(400).json(errors);
   }
-  console.log(req.user._id);
+  
   const newTransaction = new Transaction({
     user: req.user._id,
     date: req.body.date,
@@ -22,6 +22,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
   let transAmt = Number(req.body.amount);
   User.findById(req.user._id).then(user =>{
     user.balance -= transAmt;
+    user.points += 10;
     user.save();
   })
   newTransaction.save().then(transaction => res.json(transaction));
@@ -92,8 +93,6 @@ router.patch('/:id', passport.authenticate('jwt', {session: false}), (req, res) 
         res.send(result);
       }
      })}
-      // Transaction.findByIdAndUpdate(req.params.id, req.body)
-      //   .then(result =>  res.send(result))
    
      else {
       res.status(404).json({ notransactionfound: 'This transaction cannot be updated' })

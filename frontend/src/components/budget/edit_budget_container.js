@@ -30,7 +30,8 @@ const mSTP = (state, ownProps) => ({
     entertainment: state.budget.income ? state.budget.entertainment : .05,
     miscellaneous: state.budget.income ? state.budget.miscellaneous : .02,
     debt: state.budget.income ? state.budget.debt : .08,
-    formShow: state.budget.income ? true : false
+    formShow: state.budget.income ? true : false,
+    editCounter: state.budget.editCounter ? state.budget.editCounter : 0
 // })
 })
 

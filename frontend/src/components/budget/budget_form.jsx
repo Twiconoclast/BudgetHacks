@@ -104,9 +104,10 @@ class BudgetForm extends Component {
                 <div className="budget-forms">
                     <form className='budget-form' onSubmit={this.calculate}> 
                     <h1 className="budget-heading">Set your Budget</h1>
-                    <h3>Step 1) Please enter or update your income below:</h3>
+                    <h4>Step 1) Please enter or update your montly income below:</h4>
                         <label className='budget-label'> 
-                            <div className='budget-input-container'><span>Income:</span> <span> $ </span> 
+                            <div className='budget-income-container'>
+                                <span className='span-income-label'>Monthly Income:</span><span className='span-sign-label'>$</span> 
                                 <input className='budget-input' type='number' value={this.state.income} onChange={this.handleChangeIncome('income')} />
                             </div>
                             <div className='button-holder'>

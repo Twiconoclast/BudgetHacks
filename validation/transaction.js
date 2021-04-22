@@ -6,22 +6,24 @@ const validCategory = require('./valid-category')
 
 module.exports = function validateTransactionInput(data) {
   let errors = {};
-  data.amount = validNum(data.amount) ? data.amount : '';
+  data.amount = validNum(data.amount) ? data.amount: '';
   data.category = validCategory(data.category) ? data.category : '';
   data.description = validText(data.description) ? data.description : '';
 
-
-
-  if (!Validator.isFloat(data.amount)) {
-    errors.amount = 'Amount field is required and amount should be in the format 10.52';
+  if (data.amount === 0) {
+    errors.amount = 'Amount field is required and should be greater than zero';
   }
 
-  if (data.amount.split(".")[1].length > 2){
-    errors.amount = 'Amount should be in the format 10.52';
-  }
+  // if (!Validator.isFloat(data.amount) {
+  //   errors.amount = 'Amount field is required and should be greater than zero';
+  // }
+
+  // if (data.amount.split(".")[1].length > 2){
+  //   errors.amount = 'Amount should be in the format 10.52';
+  // }
 
   if (!Validator.isDate(data.date)) {
-    errors.date = 'Date field is required';
+    errors.date = ['Date field is required', data.date];
   }
 
   if (Validator.isEmpty(data.category)) {

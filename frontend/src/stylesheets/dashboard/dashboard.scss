@@ -65,8 +65,14 @@
         .button-holder {
             display: flex;
             align-items: center;
-            justify-content: flex-end;
-            margin-right: 2%;
+            justify-content:space-between;
+            margin-right: 3%;
+            margin-left: 3%;
+
+            a > button{
+                background-color: $blue;
+                border: none;
+            }
         }
 
         .add-trans {
@@ -212,10 +218,17 @@
         }
 
         .transaction-amount {
-            text-align: right;
+            text-align: center;
             padding-right: 10px;
         }
+
+        .transaction-dollars, .transaction-percentage{
+            text-align: center;
+        }
         
+        .transaction-prizequantity{
+            text-align: center;
+        }
     }
 
 }

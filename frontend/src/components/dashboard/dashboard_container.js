@@ -10,7 +10,6 @@ const mSTP = state => ({
     balance: state.user.balance,
     points: state.user.points,
     prizes: state.user.prizes,
-    income: state.user.budget.income,
     budget: state.user.budget
 })
 

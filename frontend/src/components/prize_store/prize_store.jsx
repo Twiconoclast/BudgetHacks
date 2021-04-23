@@ -83,8 +83,8 @@ class PrizeStore extends React.Component {
     redeemPrize(name, prize, e) {
         e.preventDefault()
         this.props.addPrize(this.props.userId, prize)
-            // .then((success) => this.setState({[name]: true}))
-            // .catch((failure) => )
+            .then((success) => this.setState({[name]: 'success'}))
+            .catch((failure) => this.setState({[name]: 'failure'}))
         
     }
 
@@ -105,20 +105,26 @@ class PrizeStore extends React.Component {
                     <figure className="prize-img">
                         <img src={prize.url} alt={prize.name} />
                     </figure>
+                    <h3>{prize.name}</h3>
                     <button onClick={(e) => this.redeemPrize(prize.name, prize, e)}>Redeem this prize!</button>
                     <div className="prize-points">{prize.points} <span>Points</span></div>
-                    {/* <div className={!this.state[prize.name] ? 'hidden' : ''
-                                    }>
+                    <div className={!this.state[prize.name] ? 'hidden' : this.state[prize.name] === 'success' ? '' : 'hidden'}>
                         <h3>Your prize has been redeemed!</h3>
                         <h4>Checkout your prizes on the dashboard</h4>
                         <button onClick={(e) => this.closeRedeem(prize.name, e)}>Close</button>
-                    </div> */}
+                    </div>
+                    <div className={!this.state[prize.name] ? 'hidden' : this.state[prize.name] === 'failure' ? '' : 'hidden'}>
+                        <h3>You don't have enough points to redeem this reward!</h3>
+                        <h4>Checkout your prizes on the dashboard</h4>
+                        <button onClick={(e) => this.closeRedeem(prize.name, e)}>Close</button>
+                    </div>
                 </li>
             )
         })
 
         return (
             <div className="prizes">
+                <h1>Points: {this.props.user.points}</h1>
                 <ul className="prizes-container">
                     {prizeItems}
                 </ul>

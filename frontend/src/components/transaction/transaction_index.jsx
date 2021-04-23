@@ -58,12 +58,11 @@ class TransactionIndex extends React.Component{
         <button onClick={this.toggleCreateForm}>+</button>
 
         <ul>
-          <li className={this.state.createFormShow ? "" : 'hidden'}>
+          <li key='createTransactionContainer' className={this.state.createFormShow ? "" : 'hidden'}>
             <CreateTransactionContainer toggleCreateForm={this.toggleCreateForm}/>
           </li>
             {tList}
         </ul>
-        <PrizeStoreContainer />
       </div>
     )
   }

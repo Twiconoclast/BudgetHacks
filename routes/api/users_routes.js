@@ -26,7 +26,7 @@ router.post("/signup", (req, res) => {
         return res.status(400).json(errors);
       } else {
         const newUser = new User({
-          points: 50000,
+          points: 500,
           username: req.body.username,
           balance: req.body.balance,
           password: req.body.password,

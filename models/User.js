@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const BudgetSchema = new Schema({
+                                  editCounter: {type: Number},
                                   income: {type: Number},
                                   home: {type: Number},
                                   savings: {type: Number},
@@ -15,6 +16,10 @@ const BudgetSchema = new Schema({
                               )
 
 const UserSchema = new Schema({
+  points: {
+    type: Number,
+    required: true
+  },
   username: {
     type: String,
     required: true
@@ -29,6 +34,10 @@ const UserSchema = new Schema({
   },
   budget: { 
     type: BudgetSchema
+  },
+  prizes: {
+    type: Object,
+    required: true
   }
   }, 
 {timestamps: true})

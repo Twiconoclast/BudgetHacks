@@ -13,6 +13,7 @@ import '../App.scss';
 import BudgetShowContainer from './budget/budget_show_container'
 import EditBudgetContainer from './budget/edit_budget_container'
 import TransactionIndexContainer from './transaction/transaction_index_container';
+import PrizeStoreContainer from './prize_store/prize_store_container'
 
 
 const App = () => (
@@ -26,6 +27,7 @@ const App = () => (
         <ProtectedRoute exact path="/dashboard" component={TransactionIndexContainer} />
         <ProtectedRoute exact path="/budget" component={BudgetShowContainer} />
         <ProtectedRoute exact path="/budget/edit" component={EditBudgetContainer} />
+        <ProtectedRoute exact path="/prizes" component={PrizeStoreContainer} />
     </Switch>
   </div>
 );

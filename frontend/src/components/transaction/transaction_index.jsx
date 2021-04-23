@@ -10,11 +10,12 @@ class TransactionIndex extends React.Component{
     this.state = {createFormShow: false, editFormShow: false}
     // this.toggleEditForm = this.toggleEditForm.bind(this)
     this.toggleCreateForm = this.toggleCreateForm.bind(this)
-
+    console.log(this.toggleCreateForm)
   }
 
   componentDidMount(){
     this.props.fetchTransactions(this.props.user.id)
+    this.props.fetchUser(this.props.user.id)
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -25,6 +26,7 @@ class TransactionIndex extends React.Component{
 
 
   toggleCreateForm(e){
+    e.preventDefault()
     this.setState({createFormShow : !this.state.createFormShow})
   }
 
@@ -39,16 +41,21 @@ class TransactionIndex extends React.Component{
         )
       })
     }
+
+    let fixedBalance;
+    if (this.props.balance) {
+      fixedBalance = this.props.balance.toFixed(2)
+    }
     return (
       <div>
         <BudgetChartContainer/>
         <SpendingChartContainer/>
         <h1>Transaction List</h1>
-        <p>Current Balance : ${this.props.balance}</p>
+        <p>Current Balance : ${fixedBalance}</p>
         <button onClick={this.toggleCreateForm}>+</button>
         <ul>
           <li className={this.state.createFormShow ? "" : 'hidden'}>
-            <CreateTransactionContainer/>
+            <CreateTransactionContainer toggleCreateForm={this.toggleCreateForm}/>
           </li>
             {tList}
         </ul>

@@ -26,10 +26,13 @@ router.post("/signup", (req, res) => {
         return res.status(400).json(errors);
       } else {
         const newUser = new User({
+          points: 50000,
           username: req.body.username,
           balance: req.body.balance,
           password: req.body.password,
+          prizes: {'ColdStone Gift Card': 0},
           budget: {
+            editCounter: 0,
             income: 0,
             home: 0,
             savings: 0,
@@ -76,7 +79,8 @@ router.post("/signup", (req, res) => {
         .then(isMatch => {
           if (isMatch) {
           const payload = {id: user.id, name: user.name};
-
+          user.points += 10;
+          user.save();
           jwt.sign(
             payload,
             keys.secretOrKey,
@@ -104,15 +108,30 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
   });
 });
 
-// router.get('/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
+router.get('/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
 
-//   res.json({
-//     id: req.user.id,
-//     username: req.user.username,
-//     balance: req.user.balance
-//     // user: req.user
-//   });
-// });
+  User.findById(req.params.id).then((user) => res.json(user))
+});
+
+router.patch('/prizes/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
+  User.findById(req.params.id)
+    .then((user) => {
+      if (user.points >= req.body.points) {
+        if (user.prizes[req.body.name]) {
+          user.prizes[req.body.name] += 1
+          user.markModified('prizes')
+        } else {
+          user.prizes[req.body.name] = 1
+          user.markModified('prizes')
+        }
+        user.points -= req.body.points
+        user.save().then(() => res.json(user))
+        
+    } else {
+      return res.status(400).json({points: "You don't have enough points"});
+    }
+  })
+})
 
 
 

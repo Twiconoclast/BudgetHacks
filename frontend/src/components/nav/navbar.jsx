@@ -50,7 +50,7 @@ class NavBar extends React.Component {
                 </div>
                 <div className='nav-right'>
                     <button>
-                    <Link to={'/profile'}>                    
+                    <Link to={'/'}>                    
                     <p className='icon'><ImProfile/></p>
                     <div className='button-text'> Profile </div>
                     </Link>

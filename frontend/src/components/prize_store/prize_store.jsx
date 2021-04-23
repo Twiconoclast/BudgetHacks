@@ -19,7 +19,7 @@ class PrizeStore extends React.Component {
                         url: "https://marketingcdn.giftcardgranny.com/merchant-images/lg/safeway-gift-card.png"
                     },
                     {
-                        name: "Olive Garden GIft Card",
+                        name: "Olive Garden Gift Card",
                         points: 1250,
                         url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7UviddWUewkY0NB_W59F85l8OqFfPGj1pzw&usqp=CAU"
                     },
@@ -108,12 +108,12 @@ class PrizeStore extends React.Component {
                     <h3>{prize.name}</h3>
                     <button onClick={(e) => this.redeemPrize(prize.name, prize, e)}>Redeem this prize!</button>
                     <div className="prize-points">{prize.points} <span>Points</span></div>
-                    <div className={!this.state[prize.name] ? 'hidden' : this.state[prize.name] === 'success' ? '' : 'hidden'}>
+                    <div className={!this.state[prize.name] ? 'hidden' : this.state[prize.name] === 'success' ? 'show' : 'hidden'}>
                         <h3>Your prize has been redeemed!</h3>
                         <h4>Checkout your prizes on the dashboard</h4>
                         <button onClick={(e) => this.closeRedeem(prize.name, e)}>Close</button>
                     </div>
-                    <div className={!this.state[prize.name] ? 'hidden' : this.state[prize.name] === 'failure' ? '' : 'hidden'}>
+                    <div className={!this.state[prize.name] ? 'hidden' : this.state[prize.name] === 'failure' ? 'show' : 'hidden'}>
                         <h3>You don't have enough points to redeem this reward!</h3>
                         <h4>Checkout your prizes on the dashboard</h4>
                         <button onClick={(e) => this.closeRedeem(prize.name, e)}>Close</button>

@@ -74,10 +74,12 @@ class SpendingChart extends React.Component{
           },
         ],
       },
+      responsive: true,
+      maintainAspectRatio: true,
     }
     return(
-      <div>
-        <Bar data={data} options={options} />
+      <div className='bar-chart'>
+        <Bar data={data} options={options}/>
       </div>
     )
   }

@@ -1,0 +1,222 @@
+.dashboard {
+    background-color: $blue-green;
+    padding-top: 3%;
+
+    .charts-section {
+        h1 {
+            text-align: center;
+            background-color: $off-white;
+            font-size: 40px;
+            font-weight: 600;
+            margin-bottom: 2%;
+            margin-left: 1%;
+            margin-right: 1%;
+            border: 3px solid $dark-blue;
+        }
+    }
+
+    .charts-div {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        .line-chart {
+            width: 46%;
+            padding: 1%;
+            background-color: $off-white;
+            border: 3px solid $dark-blue;
+        }
+
+        .bar-chart {
+            width: 46%;
+            padding: 1%;
+            background-color: $off-white;
+            border: 3px solid $dark-blue;
+        }
+    }
+
+    .transactions-section {
+        h1 {
+            text-align: center;
+            background-color: $off-white;
+            font-size: 40px;
+            font-weight: 600;
+            margin-top: 3%;
+            margin-bottom: 2%;
+            margin-left: 1%;
+            margin-right: 1%;
+            border: 3px solid $dark-green;
+        }
+    }
+
+    .transactions-div {
+        background-color: $off-white;
+        margin-left: 1%;
+        margin-right: 1%;
+        border: 3px solid $dark-green;
+
+        .account-balance {
+            padding-top: 2%;
+            padding-bottom: 2%;
+            font-size: 28px;
+            font-weight: 500;
+            text-align: center;
+        }
+        .button-holder {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-right: 2%;
+        }
+
+        .add-trans {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid $dark-green;
+            background-color: $dark-green;
+            color: white;
+            border-radius: 5px;
+            padding: 5px;
+
+            p {
+                font-size: 20px;
+                font-weight: 400;
+            }
+
+            svg {
+                fill: white;
+                height: 20px;
+                width: 20px;
+                margin-right: 10px;
+            }
+        }
+
+        .add-trans:hover {
+            box-shadow: 0 0 2px 2px $light-gray;
+        }
+
+    }
+
+    .create-trans-section {
+        background-color: white;
+        margin: 5%;
+        border: 1px solid $gray;
+        border-radius: 4px;
+
+        h1 {
+            text-align: center;
+            background-color: white;
+            font-size: 30px;
+            font-weight: 500;
+            margin-top: 3%;
+            margin-bottom: 0%;
+            margin-left: 1%;
+            margin-right: 1%;
+            border: none;
+        }
+
+        .create-button-holder {
+            display: flex;
+            justify-content: center;
+
+            .create-button {
+                border: 1px solid $dark-blue;
+                background-color: $blue;
+                padding: 10px;
+                color: white;
+                font-family: $serif;
+                font-weight: 500;
+                font-size: 20px;
+                border-radius: 5px;
+                text-align: center;
+                margin-bottom: 5%;
+            }
+        }
+
+        .create-button:hover {
+            box-shadow: 0 0 2px 2px $light-gray;
+        }
+
+        .create-trans-form {
+            display: flex;
+            margin-left: 5%;
+            margin-right: 5%;
+            align-items: center;
+            margin-top: 5%;
+            margin-bottom: 5%;
+
+            label {
+                font-size: 20px;
+                font-weight: 400;
+                margin-bottom: 10px;
+            }
+
+            select {
+                padding: 5px;
+                border-color: $light-gray;
+                border-style: solid;
+                border-width: 1px;
+                font-family: $serif;
+                font-size: 18px;
+            }
+
+            input {
+                width: 90%;
+                border: 1px solid $gray;
+                padding: 4px;
+                font-family: $serif;
+                font-size: 18px;
+            }
+
+        }
+    }
+
+    .transaction-table {
+        width: 95%;
+        margin: 0 auto;
+        border-color: $light-gray;
+        border-style: solid;
+        border-width: 2px;
+        border-radius: 5px;
+        margin-top: 2%;
+        margin-bottom: 3%;
+
+        th {
+            font-family: $serif;
+            font-size: 24px;
+            font-weight: 500;
+            background-color: $lightest-gray;
+            padding: 10px;
+            border-bottom: 1px solid $light-gray;
+        }
+
+        td {
+            border-bottom: 1px solid $lightest-gray;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        tr.transaction_info {
+            font-size: 22px;
+            font-weight: 400;
+        }
+
+        .transaction-date {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .transaction-category {
+            text-align: center;
+        }
+
+        .transaction-amount {
+            text-align: right;
+            padding-right: 10px;
+        }
+        
+    }
+
+}
+

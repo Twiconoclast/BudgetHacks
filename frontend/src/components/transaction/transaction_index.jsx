@@ -3,6 +3,7 @@ import TransactionShowContainer from './transaction_show_container'
 import CreateTransactionContainer from './create_transaction_container'
 import BudgetChartContainer from '../chart/budget_chart_container';
 import SpendingChartContainer from '../chart/spending_chart_container';
+import {SiAddthis} from 'react-icons/si';
 
 class TransactionIndex extends React.Component{
   constructor(prop){
@@ -39,13 +40,12 @@ class TransactionIndex extends React.Component{
         )
       })
     }
+
     return (
-      <div>
-        <BudgetChartContainer/>
-        <SpendingChartContainer/>
+      <div >
         <h1>Transaction List</h1>
         <p>Current Balance : ${this.props.balance}</p>
-        <button onClick={this.toggleCreateForm}>+</button>
+        <button onClick={this.toggleCreateForm}><SiAddthis/></button>
         <ul>
           <li className={this.state.createFormShow ? "" : 'hidden'}>
             <CreateTransactionContainer/>

@@ -64,17 +64,53 @@ class PrizeStore extends React.Component {
                         url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3CTTaMs-QzcrjBBmAL-jQRxjE6c_ofIdqyw&usqp=CAU"
                     }
                 ]
+
+                this.state = {"ColdStone Gift Card": false,
+                        "Starbucks Gift Card": false,
+                        "Safeway Gift Card": false,
+                        "Olive Garden GIft Card": false,
+                        "One month membership to Gold's Gym": false,
+                        "Netflix for 6 months": false,
+                        "Chevron Gift Card": false,
+                        "Amazon Gift Card": false,
+                        "Steam Gift Card": false,
+                        "One free bike from Fixie": false,
+                        "San Fransisco Bay Boat Cruise Wine Tasting": false,
+                        "Disneyland Tickets": false
+                    }
+    }
+
+    redeemPrize(name, prize, e) {
+        e.preventDefault()
+        this.props.addPrize(this.props.userId, prize)
+            // .then((success) => this.setState({[name]: true}))
+            // .catch((failure) => )
+        
+    }
+
+    closeRedeem(name, e) {
+        e.preventDefault()
+        this.setState({[name]: false})
     }
 
 
     render() {
+        let message;
+
+        // if (this.state.)
 
         let prizeItems = this.prizes.map((prize) => {
             return (
                 <li key={prize.name}>
                     <img src={prize.url} alt={prize.name} />
-                    <button onClick={() => this.props.addPrize(this.props.userId, prize)}>Redeem this prize!</button>
+                    <button onClick={(e) => this.redeemPrize(prize.name, prize, e)}>Redeem this prize!</button>
                     <div>{prize.points} <span>Points</span></div>
+                    {/* <div className={!this.state[prize.name] ? 'hidden' : ''
+                                    }>
+                        <h3>Your prize has been redeemed!</h3>
+                        <h4>Checkout your prizes on the dashboard</h4>
+                        <button onClick={(e) => this.closeRedeem(prize.name, e)}>Close</button>
+                    </div> */}
                 </li>
             )
         })

@@ -10,7 +10,7 @@ import {IoEnterSharp} from 'react-icons/io5';
 import {Link} from 'react-router-dom'
 import { slice } from 'lodash';
 
-class TransactionIndex extends React.Component{
+class Dashboard extends React.Component{
   constructor(prop){
     super(prop)
     this.state = {createFormShow: false, editFormShow: false}
@@ -20,8 +20,9 @@ class TransactionIndex extends React.Component{
   }
 
   componentDidMount(){
-    this.props.fetchTransactions(this.props.user.id)
     this.props.fetchUser(this.props.user.id)
+      .then(() => this.props.fetchTransactions(this.props.user.id))
+    
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -43,11 +44,9 @@ class TransactionIndex extends React.Component{
       })
     }
     let prizeList = [];
-    console.log(this.props.prizes)
     if (this.props.prizes) {
       this.prizesThatCanBeWon.forEach((prizeThatCanBeWon) => {
         if (this.props.prizes[prizeThatCanBeWon]) {
-          console.log(this.props.prizes[prizeThatCanBeWon])
             prizeList.push({name: prizeThatCanBeWon, quanity: this.props.prizes[prizeThatCanBeWon]})
         }
       })
@@ -55,7 +54,7 @@ class TransactionIndex extends React.Component{
     let finishedPrizeList;
     if (prizeList.length) {
       finishedPrizeList = prizeList.map((prize) => {
-        return (<tr>
+        return (<tr key={prize.name}>
           <td>{prize.name}</td>
           <td>{prize.quanity}</td>
         </tr>)
@@ -66,8 +65,10 @@ class TransactionIndex extends React.Component{
         <td>No Prizes Yet!</td>
       </tr>)
     }
+    let income;
     let budgetItems;
     if (this.props.budget){
+      income = this.props.budget.income ? this.props.budget.income : 0
       budgetItems = Object.keys(this.props.budget).map((category) => {
         if (category !== 'editCounter' && category !== '_id' && category !== 'income') {
           let name = category.slice(0, 1).toUpperCase() + category.slice(1)
@@ -77,14 +78,15 @@ class TransactionIndex extends React.Component{
           if (name === 'PersonalCare') {
             name = 'Personal Care'
           }
-          return (<tr>
+          return (<tr key={name}>
           <td>{name}</td>
-          <td>${this.props.budget[category] * this.props.income}</td>
+          <td>${this.props.budget[category] * this.props.budget.income}</td>
           <td>{this.props.budget[category] * 100}%</td>
         </tr>)
         }
       })
     }
+
     
     return (
       <div className='dashboard'>
@@ -130,7 +132,7 @@ class TransactionIndex extends React.Component{
         <section className='transactions-section'>
           <h1>Your Budget</h1>
           <div className='transactions-div'>
-          <p className='account-balance'>Income: {this.props.income}</p>
+          <p className='account-balance'>Income: {income}</p>
             <div className='button-holder'> 
               <Link to='/budget'>
                 <button className='add-trans'>
@@ -163,9 +165,6 @@ class TransactionIndex extends React.Component{
                 </button>
               </Link>
             </div>
-            <div className={this.state.createFormShow ? "" : 'hidden'}>
-              <CreateTransactionContainer/>
-            </div>
           <table className='transaction-table'>
             <thead>
               <tr>
@@ -186,4 +185,4 @@ class TransactionIndex extends React.Component{
 
 
 
-export default TransactionIndex 
+export default Dashboard 

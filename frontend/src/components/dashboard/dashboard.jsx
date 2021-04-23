@@ -33,6 +33,7 @@ class Dashboard extends React.Component{
 
 
   toggleCreateForm(e){
+    e.preventDefault()
     this.setState({createFormShow : !this.state.createFormShow})
   }
 
@@ -112,7 +113,7 @@ class Dashboard extends React.Component{
               </button>
             </div>
             <div className={this.state.createFormShow ? "" : 'hidden'}>
-              <CreateTransactionContainer/>
+              <CreateTransactionContainer toggleCreateForm={this.toggleCreateForm}/>
             </div>
           <table className='transaction-table'>
             <thead>

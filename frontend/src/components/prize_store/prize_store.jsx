@@ -101,10 +101,12 @@ class PrizeStore extends React.Component {
 
         let prizeItems = this.prizes.map((prize) => {
             return (
-                <li key={prize.name}>
-                    <img src={prize.url} alt={prize.name} />
+                <li key={prize.name} className="prize-item">
+                    <figure className="prize-img">
+                        <img src={prize.url} alt={prize.name} />
+                    </figure>
                     <button onClick={(e) => this.redeemPrize(prize.name, prize, e)}>Redeem this prize!</button>
-                    <div>{prize.points} <span>Points</span></div>
+                    <div className="prize-points">{prize.points} <span>Points</span></div>
                     {/* <div className={!this.state[prize.name] ? 'hidden' : ''
                                     }>
                         <h3>Your prize has been redeemed!</h3>
@@ -116,8 +118,8 @@ class PrizeStore extends React.Component {
         })
 
         return (
-            <div>
-                <ul>
+            <div className="prizes">
+                <ul className="prizes-container">
                     {prizeItems}
                 </ul>
             </div>

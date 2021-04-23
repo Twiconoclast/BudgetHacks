@@ -1,0 +1,75 @@
+
+.prize-img > img{
+  width: 300px;
+  height: 210px;
+  border-radius: 10px;
+  //align-self: center;
+  margin: 0;
+}
+
+.prize-item{
+  align-self: center;
+  background-color:$off-white;
+  border: 2px solid $blue-green;
+  border-radius: 4px;
+  width: 350px;
+  height: 325px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: $serif;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  
+  .prize-img{
+    margin: 0;
+    align-self: center;
+  }
+  button{
+    margin-top: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    align-self: center;
+    background-color: $blue;
+    border-radius: 3px;
+    font-size: 18px;
+    font-weight: 600;
+    color: $yellow;
+    transition: 0.5s;
+  }
+
+  button:hover{
+    background-color: $yellow;
+    color: $blue;
+    transition: 0.5s;
+  }
+  
+
+  .prize-points{
+    align-self: center;
+    color: $yellow;
+    font-weight: 600;
+    font-size: 17px;
+  }
+}
+
+.prizes{
+  columns: 2;
+
+  .prizes-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+
+}
+
+  @include mobile {
+    .prizes{
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }

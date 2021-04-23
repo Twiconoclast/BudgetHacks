@@ -33,74 +33,74 @@ class BudgetShow extends Component {
                         </div>
                         <div className='budget-show-category-head'>Savings: 
                             <div className='budget-show-category'>
-                                <div>
+                                <div className='budget-show-category-item'>
                                     <div>${this.props.budget.savings * this.props.budget.income}</div>
-                                </div>
                                     <div>{this.props.budget.savings * 100}%</div>
+                                </div>
                             </div>
                         </div>
                         <div className='budget-show-category-head'>Debt: 
                             <div className='budget-show-category'>
-                                <div>
+                                <div className='budget-show-category-item'>
                                     <div>${this.props.budget.debt * this.props.budget.income}</div>
-                                </div>
                                     <div>{this.props.budget.debt * 100}%</div>
+                                </div>
                             </div>        
                         </div>
                         <div className='budget-show-category-head'>Home: 
                             <div className='budget-show-category'>
-                                <div>
+                                <div className='budget-show-category-item'>
                                     <div>${this.props.budget.home * this.props.budget.income}</div>
-                                </div>
                                     <div>{this.props.budget.home * 100}%</div>
+                                </div>
                             </div>        
                         </div>
                         <div className='budget-show-category-head'>Transportation: 
                             <div className='budget-show-category'>
-                                <div>
+                                <div className='budget-show-category-item'>
                                     <div>${this.props.budget.transportation * this.props.budget.income}</div>
+                                    <div>{this.props.budget.transportation * 100}%</div>
                                 </div>
-                                <div>{this.props.budget.transportation * 100}%</div>
                             </div>    
                         </div>
                         <div className='budget-show-category-head'>Personal Care: 
                             <div className='budget-show-category'>
-                                <div>
+                                <div className='budget-show-category-item'>
                                     <div>${this.props.budget.personalCare * this.props.budget.income}</div>
-                                </div>
                                     <div>{this.props.budget.personalCare * 100}%</div>
+                                </div>
                             </div>        
                         </div>
                         <div className='budget-show-category-head'>Food And Dining: 
                             <div className='budget-show-category'>
-                                <div>
+                                <div className='budget-show-category-item'>
                                     <div>${this.props.budget.foodAndDining * this.props.budget.income}</div>
-                                </div>
                                     <div>{this.props.budget.foodAndDining * 100}%</div>
+                                </div>
                             </div>        
                         </div>
                         <div className='budget-show-category-head'>Shopping: 
                             <div className='budget-show-category'>
-                                <div>
+                                <div className='budget-show-category-item'>
                                     <div>${this.props.budget.shopping * this.props.budget.income}</div>
-                                </div>
                                     <div>{this.props.budget.shopping * 100}%</div>
+                                </div>
                             </div>        
                         </div>
                         <div className='budget-show-category-head'>Entertainment: 
                             <div className='budget-show-category'>
-                                <div>
+                                <div className='budget-show-category-item'>
                                     <div>${this.props.budget.entertainment * this.props.budget.income}</div>
-                                </div>
                                     <div>{this.props.budget.entertainment * 100}%</div>
+                                </div>
                             </div>        
                         </div>
                         <div className='budget-show-category-head'>Miscellaneous: 
                             <div className='budget-show-category'>
-                                <div>
+                                <div className='budget-show-category-item'>
                                     <div>${this.props.budget.miscellaneous * this.props.budget.income}</div>
-                                </div>
                                     <div>{this.props.budget.miscellaneous * 100}%</div>
+                                </div>
                             </div>        
                         </div>
                         <div className='budget-show-button'>

@@ -42,8 +42,18 @@
     padding-top: 2px;
   }
 
+  .budget-show-category-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-top: .5%;
+    padding-bottom: .5%;
+    font-size: 22px;
+
+  }
+
   .budget-show-category-head{
-    font-size: 20px;
+    font-size: 23px;
     font-weight: 400;
     text-align: center;
     background-color: #ECEEF1;
@@ -55,7 +65,7 @@
     justify-content: space-around;
     border: $dark-green solid 3px;
     width: 100%;
-    padding: 2px
+    padding: 2px;
   }
 
   .budget-show-category{

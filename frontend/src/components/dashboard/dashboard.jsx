@@ -55,9 +55,9 @@ class TransactionIndex extends React.Component{
     let finishedPrizeList;
     if (prizeList.length) {
       finishedPrizeList = prizeList.map((prize) => {
-        return (<tr>
-          <td>{prize.name}</td>
-          <td>{prize.quanity}</td>
+        return (<tr className="transaction_info">
+          <td className="transaction-prizename">{prize.name}</td>
+          <td className="transaction-prizequantity">{prize.quanity}</td>
         </tr>)
       })
     } else {
@@ -77,10 +77,10 @@ class TransactionIndex extends React.Component{
           if (name === 'PersonalCare') {
             name = 'Personal Care'
           }
-          return (<tr>
-          <td>{name}</td>
-          <td>${this.props.budget[category] * this.props.income}</td>
-          <td>{this.props.budget[category] * 100}%</td>
+          return (<tr className="transaction_info">
+          <td className="transaction-category">{name}</td>
+          <td className="transaction-dollars">${this.props.budget[category] * this.props.income}</td>
+          <td className="transaction-percentage">{this.props.budget[category] * 100}%</td>
         </tr>)
         }
       })

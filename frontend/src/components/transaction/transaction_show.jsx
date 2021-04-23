@@ -40,7 +40,7 @@ class TransactionShow extends React.Component{
                   <tr className='transaction-table-row'>
                     <td>{this.props.transaction.date}</td>
                     <td>{this.props.transaction.amount}</td>
-                    <td>{this.props.transaction.category}</td>
+                    <td>{category}</td>
                     <td>{this.props.transaction.description}</td>
                     <td><button onClick={this.toggleEditForm}>Edit</button></td>
                   </tr>

@@ -19,13 +19,13 @@ class SpendingChart extends React.Component{
 
   getMonth(month){
     if (month < 10){
-      console.log('in this if statement')
       month = '0' + month;
     } else {
       month = month.toString();
     }
     return month;
   }
+
 
   label(month){
     let monthArr = ['January', 'February', 'March', 

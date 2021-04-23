@@ -15,16 +15,31 @@ router.patch('/:id', passport.authenticate('jwt', {session: false}),
   if (!isValid) {
     return res.status(400).json(errors);
   }
-
-  User.findByIdAndUpdate({_id: req.params.id}, {budget: req.body}, {new: true}, function(err, result){
+  // const newBudget = Object.assign({}, req.body);
+  // console.log(newBudget)
+  // let counter = undefined;
+  // User.findById(req.params.id).then(user =>{
+  //   counter = user.budget.editCounter;
+  //   console.log(counter)
+  //   newBudget.editCounter = counter + 1;
+  // console.log(newBudget);
+  // });
+  // console.log(counter)
+  
+  User.findByIdAndUpdate({_id: req.params.id}, {budget: req.body}, {new: true}, function(err, user){
       if(err){
         res.send(err);
-      } else{
-        console.log(result)
-        res.send(result);
+      } 
+  })
+    .then(user =>{
+      
+      if(user.budget.editCounter <= 1){
+        user.points += 500;
+        user.save();
       }
-  }
-)
+      console.log(user)
+      res.send(user);
+})
 })
 
   router.get('/:id', passport.authenticate('jwt', {session: false}),

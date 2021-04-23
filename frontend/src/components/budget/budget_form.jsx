@@ -14,7 +14,8 @@ class BudgetForm extends Component {
             shopping: parseFloat(this.props.shopping),
             entertainment: parseFloat(this.props.entertainment),
             miscellaneous: parseFloat(this.props.miscellaneous),
-            debt: parseFloat(this.props.debt)
+            debt: parseFloat(this.props.debt),
+            editCounter: parseInt(this.props.editCounter + 1)
         }
         this.redOrGreen = 'green'
         this.percentOfIncome = this.state.home + this.state.savings + this.state.transportation + this.state.personalCare + this.state.foodAndDining + this.state.shopping + this.state.entertainment + this.state.miscellaneous + this.state.debt
@@ -75,9 +76,11 @@ class BudgetForm extends Component {
         } else if (this.percentOfIncome.toFixed(2) < .99) {
             this.setState(prevState => ({savings: (prevState.savings + (1 - this.percentOfIncome)).toFixed(2)}))
             this.props.updateBudget(this.props.user.id, this.state)
+            this.props.fetchUser(this.props.user.id)
             .then(() => this.props.history.push('/budget'))
-        } else {
+        } else {       
             this.props.updateBudget(this.props.user.id, this.state)
+            this.props.fetchUser(this.props.user.id)
             .then(() => this.props.history.push('/budget'))
         }  
     }

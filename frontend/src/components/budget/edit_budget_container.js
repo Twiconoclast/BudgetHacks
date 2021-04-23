@@ -3,6 +3,7 @@ import BudgetForm from './budget_form'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {updateBudget, fetchBudget} from '../../actions/budget_actions'
+import {fetchUser} from '../../actions/user_actions'
 
 const mSTP = (state, ownProps) => ({
     // user: state.session.user,
@@ -30,13 +31,15 @@ const mSTP = (state, ownProps) => ({
     entertainment: state.budget.income ? state.budget.entertainment : .05,
     miscellaneous: state.budget.income ? state.budget.miscellaneous : .02,
     debt: state.budget.income ? state.budget.debt : .08,
-    formShow: state.budget.income ? true : false
+    formShow: state.budget.income ? true : false,
+    editCounter: state.budget.editCounter ? state.budget.editCounter : 0
 // })
 })
 
 const mDTP = dispatch => ({
     updateBudget: (id, budget) => dispatch(updateBudget(id, budget)),
-    fetchBudget: (id) => dispatch(fetchBudget(id)) 
+    fetchBudget: (id) => dispatch(fetchBudget(id)),
+    fetchUser: (userId) => dispatch(fetchUser(userId)) 
 })
 
 export default withRouter(connect(mSTP, mDTP)(BudgetForm))

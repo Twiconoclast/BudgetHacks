@@ -12,7 +12,6 @@ class EditTransactionForm extends React.Component{
                   description:this.props.transaction.description,
                   _id: this.props.transaction._id
                 }
-                console.log(this.props.toggleEditForm)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }

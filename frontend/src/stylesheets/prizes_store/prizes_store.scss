@@ -1,15 +1,18 @@
 
 .prize-img{
-  background-color:green;
-
+  background-color:$off-white;
+  border: 2px solid $green;
+  border-radius: 4px;
+  width: 300px;
+  height: 225px;
   display: flex;
   justify-content: center;
 
 
 }
 .prize-img > img{
-  width: 40%;
-  height: auto;
+  width: 250px;
+  height: 160px;
   border-radius: 10px;
   align-self: center;
 }

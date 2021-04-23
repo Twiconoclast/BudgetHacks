@@ -119,10 +119,12 @@ class BudgetChart extends React.Component{
           },
         ],
       },
+    responsive: true,
+    maintainAspectRatio: true,
     }
     return(
       <div>
-        <Line data={data} options={options} />
+        <Line data={data} options={options}/>
       </div>
     )
   }

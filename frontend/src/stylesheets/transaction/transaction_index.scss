@@ -1,0 +1,52 @@
+.transaction-table {
+  width: 95%;
+  margin: 0 auto;
+  border-color: $light-gray;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 5px;
+  margin-top: 2%;
+  margin-bottom: 3%;
+
+  th {
+      font-family: $serif;
+      font-size: 24px;
+      font-weight: 500;
+      background-color: $lightest-gray;
+      padding: 10px;
+      border-bottom: 1px solid $light-gray;
+  }
+
+  td {
+      border-bottom: 1px solid $lightest-gray;
+      padding-top: 5px;
+      padding-bottom: 5px;
+  }
+
+  tr.transaction_info {
+      font-size: 22px;
+      font-weight: 400;
+  }
+
+  .transaction-date {
+      text-align: center;
+      margin-bottom: 10px;
+  }
+
+  .transaction-category {
+      text-align: center;
+  }
+
+  .transaction-amount {
+      text-align: center;
+      padding-right: 10px;
+  }
+
+  .transaction-dollars, .transaction-percentage{
+      text-align: center;
+  }
+  
+  .transaction-prizequantity{
+      text-align: center;
+  }
+}

@@ -3,6 +3,11 @@
   align-items: center;
   flex-direction: column;
 
+
+  .budget-show-form-container2{
+    width: 90%;
+  }
+
   .budget-show-form-header{
     background-color: #f8f5f1;
     font-size: 40px;
@@ -20,6 +25,7 @@
     font-size: 28px;
     font-weight: 500;
     padding-bottom: 2%;
+    padding-top: 1%;
 
   }
 
@@ -40,11 +46,21 @@
     font-size: 20px;
     font-weight: 400;
     text-align: center;
-    background-color: #84b1c4;
+    background-color: #ECEEF1;
+  }
+
+  .budget-show-category-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: $dark-green solid 3px;
+    width: 100%;
+    padding: 2px
   }
 
   .budget-show-category{
-    background-color: #bebcbc;
+    background-color: white;
+    border: 3px $lightest-gray solid;
   }
 
   .budget-show-home-button{
@@ -58,5 +74,11 @@
     font-weight: 400;
     padding-top: 2px;
     padding-bottom: 2px;
+  }
+
+  .budget-show-button{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1%;
   }
 }

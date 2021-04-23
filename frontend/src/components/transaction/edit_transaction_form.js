@@ -1,4 +1,5 @@
 import React from 'react'
+import { fetchUser } from '../../util/user_util'
 
 
 class EditTransactionForm extends React.Component{
@@ -11,6 +12,7 @@ class EditTransactionForm extends React.Component{
                   description:this.props.transaction.description,
                   _id: this.props.transaction._id
                 }
+                console.log(this.props.toggleEditForm)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
@@ -19,7 +21,8 @@ class EditTransactionForm extends React.Component{
     e.preventDefault()
     console.log(this.state)
     this.props.updateTransaction(this.state)
-    .then(() => this.props.fetchUser(this.props.user.id))
+    .then(() => {this.props.fetchUser(this.props.user.id)
+                  this.props.toggleEditForm(e)})
       // .then(() => this.props.getTransaction(this.props.transaction._id))
     // this.props.toggleEditForm()
   }
@@ -62,7 +65,10 @@ class EditTransactionForm extends React.Component{
           </label>
           <button type='submit'>Edit Transaction</button>
         </form>
-        <button onClick={()=>this.props.deleteTransaction}>Delete</button>
+        <button onClick={() => {
+          return this.props.deleteTransaction(this.props.transaction._id)
+            .then(() => this.props.fetchUser(this.props.user.id))
+          }}>Delete</button>
       </div>
     )
   }

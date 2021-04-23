@@ -17,7 +17,8 @@ class CreateTransactionForm extends React.Component{
     e.preventDefault()
     console.log(this.state)
     this.props.createTransaction(this.state)
-    .then(() => this.props.fetchUser(this.props.user.id))
+    .then(() => {this.props.fetchUser(this.props.user.id)
+                  this.props.toggleCreateForm(e)})
     
     this.setState(
       { user: this.props.user.id,

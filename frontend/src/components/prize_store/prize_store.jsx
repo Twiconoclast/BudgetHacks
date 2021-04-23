@@ -71,17 +71,19 @@ class PrizeStore extends React.Component {
 
         let prizeItems = this.prizes.map((prize) => {
             return (
-                <li key={prize.name}>
-                    <img src={prize.url} alt={prize.name} />
+                <li key={prize.name} className="prize-item">
+                    <figure className="prize-img">
+                        <img src={prize.url} alt={prize.name} />
+                    </figure>
                     <button onClick={() => this.props.addPrize(this.props.userId, prize)}>Redeem this prize!</button>
-                    <div>{prize.points} <span>Points</span></div>
+                    <div className="prize-points">{prize.points} <span>Points</span></div>
                 </li>
             )
         })
 
         return (
-            <div>
-                <ul>
+            <div className="prizes">
+                <ul className="prizes-container">
                     {prizeItems}
                 </ul>
             </div>

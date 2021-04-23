@@ -5,7 +5,7 @@ import {fetchTransactions, deleteTransaction} from '../../actions/transaction_ac
 
 const mSTP = state => ({
     user: state.session.user,
-    transactions: state.transactions,
+    transactions: Object.values(state.transactions),
     balance: state.user.balance
 })
 

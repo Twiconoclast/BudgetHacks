@@ -52,9 +52,7 @@ class BudgetChart extends React.Component{
     let total = 0;
     let income = this.props.budget.income
     Object.keys(this.props.budget).forEach((key)=>{
-      console.log(this.props.budget[key] * income + `${key}`)
       if (key !== 'savings' && key !== 'income' && key !== '_id' && key !== 'editCounter'){
-        console.log(this.props.budget[key] * income)
         total += this.props.budget[key] * income
       }
     });

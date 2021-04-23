@@ -42,10 +42,15 @@ class TransactionIndex extends React.Component{
         )
       })
     }
+
+    let fixedBalance;
+    if (this.props.balance) {
+      fixedBalance = this.props.balance.toFixed(2)
+    }
     return (
       <div>
         <h1>Transaction List</h1>
-        <p>Current Balance : ${this.props.balance.toFixed(2)}</p>
+        <p>Current Balance : ${fixedBalance}</p>
         <button onClick={this.toggleCreateForm}>+</button>
         <ul>
           <li className={this.state.createFormShow ? "" : 'hidden'}>

@@ -36,7 +36,8 @@ const UserSchema = new Schema({
     type: BudgetSchema
   },
   prizes: {
-    type: Object
+    type: Object,
+    required: true
   }
   }, 
 {timestamps: true})

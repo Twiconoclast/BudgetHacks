@@ -1,5 +1,6 @@
 import React from 'react'
 import EditTransactionFormContainer from './edit_transaction_form_container'
+import {SiAddthis} from 'react-icons/si';
 
 class TransactionShow extends React.Component{
   constructor(props){
@@ -19,29 +20,41 @@ class TransactionShow extends React.Component{
   }
 
   render(){
+    let category = this.props.transaction.category.slice(0, 1).toUpperCase() + this.props.transaction.category.slice(1)
+    if (category === 'FoodAndDining') {
+            category = 'Food and Dining'
+          }
+    if (category === 'PersonalCare') {
+            category = 'Personal Care'
+          }
     return(
       <div>
-        <div className={this.state.editFormShow ? 'hidden' : ''}>
-          <div>Date: 
-            {this.props.transaction.date}
-          </div>
-          <div>Amount:  
-            {this.props.transaction.amount}
-          </div>
-          <div>Category: 
-            {this.props.transaction.category}
-          </div>
-          <div>Description: 
-            {this.props.transaction.description}
-          </div>
-          <button onClick={this.toggleEditForm}>Edit Transaction</button>
-        </div>
-        <div className={this.state.editFormShow ? '' : 'hidden'}>
+                {/* <thead>
+                  <tr className='transaction-table-row'>
+                    <th>Date:</th>
+                    <th>Amount:</th>
+                    <th>Category:</th>
+                    <th>Description:</th>
+                  </tr>
+                </thead> */}
+                  <tr className='transaction-table-row'>
+                    <td>{this.props.transaction.date}</td>
+                    <td>{this.props.transaction.amount}</td>
+                    <td>{this.props.transaction.category}</td>
+                    <td>{this.props.transaction.description}</td>
+                    <td><button onClick={this.toggleEditForm}>Edit</button></td>
+                  </tr>
+                  <tr className={this.state.editFormShow ? '' : 'hidden'}>
+                    <td><EditTransactionFormContainer toggleEditForm={this.toggleEditForm} transaction={this.props.transaction}/></td>
+                  </tr>
+
+        {/* <div className={this.state.editFormShow ? '' : 'hidden'}>
           <EditTransactionFormContainer toggleEditForm={this.toggleEditForm} transaction={this.props.transaction}/>
-        </div>
+        </div> */}
       </div>
     )
   }
 }
+
 
 export default TransactionShow

@@ -4,7 +4,9 @@ import CreateTransactionContainer from './create_transaction_container'
 // import BudgetChartContainer from '../chart/budget_chart_container';
 // import SpendingChartContainer from '../chart/spending_chart_container';
 
+
 // import {SiAddthis} from 'react-icons/si';
+
 
 // import PrizeStoreContainer from '../prize_store/prize_store_container'
 
@@ -39,9 +41,7 @@ class TransactionIndex extends React.Component{
     if (this.props.transactions){
       tList = this.props.transactions.map((trans)=>{
         return (
-          <li key={trans._id}>
             <TransactionShowContainer key={trans._id} transaction={trans}/>
-          </li>
         )
       })
     }
@@ -55,14 +55,27 @@ class TransactionIndex extends React.Component{
       <div >
         <h1>Transaction List</h1>
         <p>Current Balance : ${fixedBalance}</p>
-        <button onClick={this.toggleCreateForm}>+</button>
 
-        <ul>
-          <li key='createTransactionContainer' className={this.state.createFormShow ? "" : 'hidden'}>
+        <button onClick={this.toggleCreateForm}>Create Transaction</button>
+          <div className={this.state.createFormShow ? "" : 'hidden'}> 
+
             <CreateTransactionContainer toggleCreateForm={this.toggleCreateForm}/>
-          </li>
+          </div>
+        <table>
+          <thead>
+            <tr className='transaction-table'>
+              <th>Date:</th>
+              <th>Description:</th>
+              <th>Category:</th>
+              <th>Amount:</th>
+              <th>Edit:</th>
+            </tr>
+          </thead>
+          <tbody>
             {tList}
-        </ul>
+          </tbody>
+        </table>
+
       </div>
     )
   }

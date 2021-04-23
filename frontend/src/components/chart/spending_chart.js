@@ -14,7 +14,7 @@ class SpendingChart extends React.Component{
         }
       }
     })
-    return -total;
+    return total;
   }
 
   getMonth(month){

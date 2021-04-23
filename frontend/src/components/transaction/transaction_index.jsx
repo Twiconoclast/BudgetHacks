@@ -3,7 +3,11 @@ import TransactionShowContainer from './transaction_show_container'
 import CreateTransactionContainer from './create_transaction_container'
 import BudgetChartContainer from '../chart/budget_chart_container';
 import SpendingChartContainer from '../chart/spending_chart_container';
+
+import {SiAddthis} from 'react-icons/si';
+
 import PrizeStoreContainer from '../prize_store/prize_store_container'
+
 
 class TransactionIndex extends React.Component{
   constructor(prop){
@@ -46,13 +50,13 @@ class TransactionIndex extends React.Component{
     if (this.props.balance) {
       fixedBalance = this.props.balance.toFixed(2)
     }
+
     return (
-      <div>
-        <BudgetChartContainer/>
-        <SpendingChartContainer/>
+      <div >
         <h1>Transaction List</h1>
         <p>Current Balance : ${fixedBalance}</p>
         <button onClick={this.toggleCreateForm}>+</button>
+
         <ul>
           <li className={this.state.createFormShow ? "" : 'hidden'}>
             <CreateTransactionContainer toggleCreateForm={this.toggleCreateForm}/>

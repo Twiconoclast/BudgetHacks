@@ -36,8 +36,9 @@ class CreateTransactionForm extends React.Component{
   }
   render(){
     return(
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div className='create-trans-section'>
+        <h1>Enter New Transaction Details Below:</h1>
+        <form className='create-trans-form' onSubmit={this.handleSubmit}>
           <label>Date:
             <input onChange={this.handleChange('date')} type="date" name='date' value={this.state.date}/>
           </label>
@@ -57,14 +58,15 @@ class CreateTransactionForm extends React.Component{
               <option value="personalCare">Personal Care</option>
               <option value="miscellaneous">Miscellaneous</option>
               <option value="debt">Debt</option>
-
             </select>
           </label>
           <label>Description:
             <input type='text' onChange={this.handleChange('description')} name="description" id="" value={this.state.description}/>
           </label>
-          <button>Submit Transaction</button>
         </form>
+        <div className='create-button-holder'>
+        <button className='create-button'>Submit Transaction</button>
+        </div>
       </div>
     )
   }

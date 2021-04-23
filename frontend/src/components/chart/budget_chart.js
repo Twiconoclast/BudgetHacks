@@ -124,7 +124,7 @@ class BudgetChart extends React.Component{
     maintainAspectRatio: true,
     }
     return(
-      <div>
+      <div className='line-chart'>
         <Line data={data} options={options}/>
       </div>
     )

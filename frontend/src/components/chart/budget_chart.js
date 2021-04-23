@@ -18,7 +18,7 @@ class BudgetChart extends React.Component{
         }
       }
     })
-    return -total;
+    return total;
   }
 
   getMonth(month){
@@ -51,9 +51,10 @@ class BudgetChart extends React.Component{
   getBudget(){
     let total = 0;
     let income = this.props.budget.income
-
     Object.keys(this.props.budget).forEach((key)=>{
-      if (key !== 'savings' && key !== 'income' && key !== '_id'){
+      console.log(this.props.budget[key] * income + `${key}`)
+      if (key !== 'savings' && key !== 'income' && key !== '_id' && key !== 'editCounter'){
+        console.log(this.props.budget[key] * income)
         total += this.props.budget[key] * income
       }
     });

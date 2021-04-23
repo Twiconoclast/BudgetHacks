@@ -9,9 +9,8 @@ class TransactionIndex extends React.Component{
   constructor(prop){
     super(prop)
     this.state = {createFormShow: false, editFormShow: false}
-    // this.toggleEditForm = this.toggleEditForm.bind(this)
     this.toggleCreateForm = this.toggleCreateForm.bind(this)
-    console.log(this.toggleCreateForm)
+
   }
 
   componentDidMount(){

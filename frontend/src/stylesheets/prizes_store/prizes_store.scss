@@ -1,0 +1,15 @@
+
+.prize-img{
+  background-color:green;
+
+  display: flex;
+  justify-content: center;
+
+
+}
+.prize-img > img{
+  width: 40%;
+  height: auto;
+  border-radius: 10px;
+  align-self: center;
+}

@@ -63,4 +63,13 @@
     flex-direction: column;
     justify-content: center;
   }
+
+
 }
+
+  @include mobile {
+    .prizes{
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }

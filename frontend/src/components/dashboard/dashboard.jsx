@@ -80,7 +80,7 @@ class Dashboard extends React.Component{
           }
           return (<tr className="transaction_info" key={name}>
           <td className="transaction-category">{name}</td>
-          <td className="transaction-dollars">${this.props.budget[category] * this.props.income}</td>
+          <td className="transaction-dollars">${this.props.budget[category] * this.props.budget.income}</td>
           <td className="transaction-percentage">{this.props.budget[category] * 100}%</td>
         </tr>)
         }

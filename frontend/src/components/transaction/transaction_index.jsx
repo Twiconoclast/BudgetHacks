@@ -13,6 +13,7 @@ class TransactionIndex extends React.Component{
 
   componentDidMount(){
     this.props.fetchTransactions(this.props.user.id)
+    this.props.fetchUser(this.props.user.id)
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -44,7 +45,7 @@ class TransactionIndex extends React.Component{
     return (
       <div>
         <h1>Transaction List</h1>
-        <p>Current Balance : ${this.props.balance}</p>
+        <p>Current Balance : ${this.props.balance.toFixed(2)}</p>
         <button onClick={this.toggleCreateForm}>+</button>
         <ul>
           <li className={this.state.createFormShow ? "" : 'hidden'}>

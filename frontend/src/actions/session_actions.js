@@ -6,7 +6,7 @@ export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_USER_LOGOUT = "RECEIVE_USER_LOGOUT";
 export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
-export const RECEIVE_USER = 'RECEIVE_USER'
+// export const RECEIVE_USER = 'RECEIVE_USER'
 
 // We'll dispatch this when our user signs in
 export const receiveCurrentUser = currentUser => ({
@@ -14,10 +14,10 @@ export const receiveCurrentUser = currentUser => ({
     currentUser
 });
 
-export const receiveUser = user => ({
-    type: RECEIVE_USER,
-    user
-});
+// export const receiveUser = user => ({
+//     type: RECEIVE_USER,
+//     user
+// });
 
 // This will be used to redirect the user to the login page upon signup
 export const receiveUserSignIn = () => ({
@@ -53,7 +53,6 @@ export const login = user => dispatch => (
         APIUtil.setAuthToken(token);
         const decoded = jwt_decode(token);
         dispatch(receiveCurrentUser(decoded))
-        dispatch(receiveUser(user))
     })
     .catch(err => {
         dispatch(receiveErrors(err.response.data));

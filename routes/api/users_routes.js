@@ -107,15 +107,10 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
   });
 });
 
-// router.get('/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
+router.get('/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
 
-//   res.json({
-//     id: req.user.id,
-//     username: req.user.username,
-//     balance: req.user.balance
-//     // user: req.user
-//   });
-// });
+  User.findById(req.params.id).then((user) => res.json(user))
+});
 
 
 

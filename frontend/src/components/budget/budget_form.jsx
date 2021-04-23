@@ -76,10 +76,11 @@ class BudgetForm extends Component {
         } else if (this.percentOfIncome.toFixed(2) < .99) {
             this.setState(prevState => ({savings: (prevState.savings + (1 - this.percentOfIncome)).toFixed(2)}))
             this.props.updateBudget(this.props.user.id, this.state)
+            this.props.fetchUser(this.props.user.id)
             .then(() => this.props.history.push('/budget'))
-        } else {
-           
+        } else {       
             this.props.updateBudget(this.props.user.id, this.state)
+            this.props.fetchUser(this.props.user.id)
             .then(() => this.props.history.push('/budget'))
         }  
     }

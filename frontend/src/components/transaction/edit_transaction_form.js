@@ -19,6 +19,7 @@ class EditTransactionForm extends React.Component{
     e.preventDefault()
     console.log(this.state)
     this.props.updateTransaction(this.state)
+    .then(() => this.props.fetchUser(this.props.user.id))
       // .then(() => this.props.getTransaction(this.props.transaction._id))
     // this.props.toggleEditForm()
   }
@@ -26,9 +27,6 @@ class EditTransactionForm extends React.Component{
   handleChange(field){
     return((e)=>{
       let value = e.currentTarget.value
-      if (field === 'amount') {
-        value = Number(e.currentTarget.value)
-      }
       this.setState({[field]: value})
     })
   }
@@ -43,7 +41,7 @@ class EditTransactionForm extends React.Component{
             <input onChange={this.handleChange('date')} type="date" name='date' value={this.state.date}/>
           </label>
           <label>Amount:
-            <input onChange={this.handleChange('amount')} type="number" value={this.state.amount}/>
+            <input onChange={this.handleChange('amount')} type="text" value={this.state.amount}/>
           </label>
           <label>Category:
             <select defaultValue={defaultCat} onChange={this.handleChange('category')} name="category" >
@@ -60,7 +58,7 @@ class EditTransactionForm extends React.Component{
             </select>
           </label>
           <label>Description:
-            <textarea onChange={this.handleChange('description')} name="description" value={this.state.description}></textarea>
+            <input type='text' onChange={this.handleChange('description')} name="description" value={this.state.description}/>
           </label>
           <button type='submit'>Edit Transaction</button>
         </form>

@@ -17,6 +17,8 @@ class CreateTransactionForm extends React.Component{
     e.preventDefault()
     console.log(this.state)
     this.props.createTransaction(this.state)
+    .then(() => this.props.fetchUser(this.props.user.id))
+    
     this.setState(
       { user: this.props.user.id,
       date: '',
@@ -28,10 +30,6 @@ class CreateTransactionForm extends React.Component{
   handleChange(field){
     return((e)=>{
       let value = e.currentTarget.value
-      if (field === 'amount') {
-        value = Number(e.currentTarget.value)
-      }
-      console.log(typeof value)
       this.setState({[field]: value})
     })
   }
@@ -43,7 +41,7 @@ class CreateTransactionForm extends React.Component{
             <input onChange={this.handleChange('date')} type="date" name='date' value={this.state.date}/>
           </label>
           <label>Amount:
-            <input onChange={this.handleChange('amount')} type="number" value={this.state.amount} placeholder='19.99'/>
+            <input onChange={this.handleChange('amount')} type="text" value={this.state.amount} placeholder='19.99'/>
           </label>
           <label>Category:
             <select defaultValue='' onChange={this.handleChange('category')} name="category" >
@@ -62,7 +60,7 @@ class CreateTransactionForm extends React.Component{
             </select>
           </label>
           <label>Description:
-            <textarea onChange={this.handleChange('description')} name="description" id="" cols="30" rows="10" value={this.state.description}></textarea>
+            <input type='text' onChange={this.handleChange('description')} name="description" id="" value={this.state.description}/>
           </label>
           <button>Submit Transaction</button>
         </form>

@@ -29,18 +29,16 @@ router.patch('/:id', passport.authenticate('jwt', {session: false}),
   User.findByIdAndUpdate({_id: req.params.id}, {budget: req.body}, {new: true}, function(err, user){
       if(err){
         res.send(err);
-      } else{
-        
-        res.send(user);
+      } 
+  })
+    .then(user =>{
+      
+      if(user.budget.editCounter <= 1){
+        user.points += 500;
+        user.save();
       }
-  }
-)
-.then(user =>{
-  
-  if(user.budget.editCounter <= 1){
-    user.points += 500;
-    user.save();
-  }
+      console.log(user)
+      res.send(user);
 })
 })
 

@@ -90,6 +90,12 @@ router.patch('/:id', passport.authenticate('jwt', {session: false}), (req, res) 
       if(err){
         res.send(err);
       } else {
+        let transAmt = Number(req.body.amount.toFixed(2));
+        User.findById(req.user._id).then(user =>{
+        user.balance.toFixed(2) += transaction.amount.toFixed(2)
+        user.balance.toFixed(2) -= transAmt.toFixed(2);
+        user.save();
+      })
         res.send(result);
       }
      })}

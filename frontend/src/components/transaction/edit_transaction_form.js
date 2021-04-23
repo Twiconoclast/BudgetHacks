@@ -1,5 +1,5 @@
 import React from 'react'
-import { fetchUser } from '../../util/user_util'
+// import { fetchUser } from '../../util/user_util'
 
 
 class EditTransactionForm extends React.Component{
@@ -19,7 +19,6 @@ class EditTransactionForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault()
-    console.log(this.state)
     this.props.updateTransaction(this.state)
     .then(() => {this.props.fetchUser(this.props.user.id)
                   this.props.toggleEditForm(e)})

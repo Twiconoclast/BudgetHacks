@@ -95,10 +95,6 @@ class PrizeStore extends React.Component {
 
 
     render() {
-        let message;
-
-        // if (this.state.)
-
         let prizeItems = this.prizes.map((prize) => {
             return (
                 <li key={prize.name} className="prize-item">

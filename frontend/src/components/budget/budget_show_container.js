@@ -11,7 +11,7 @@ const mSTP = state => ({
     // budgetSubHeader: state.session.user.budget.income ? "Click the button to get started" : "Keep up the good work and you'll receive this fabulous prize:",
     // buttonText: state.session.user.budget.income ? "Create your Budget" : "Edit your Budget"
     budgetHeader: state.budget.income ? "Welcome to your budget!" : "Your Budget",
-    budgetSubHeader: state.budget.income ? "Keep up the good work and you'll receive this fabulous prize:" : "Click the button to get started",
+    budgetSubHeader: state.budget.income ? "Keep up the good work!" : "Click the button to get started",
     buttonText: state.budget.income ? "Edit your Budget" : "Create your Budget"
 })
 

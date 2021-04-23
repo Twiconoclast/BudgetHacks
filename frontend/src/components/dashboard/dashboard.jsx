@@ -8,7 +8,7 @@ import {FaGift} from 'react-icons/fa';
 import {RiMoneyDollarBoxFill} from 'react-icons/ri';
 import {IoEnterSharp} from 'react-icons/io5';
 import {Link} from 'react-router-dom'
-import { slice } from 'lodash';
+// import { slice } from 'lodash';
 
 class Dashboard extends React.Component{
   constructor(prop){

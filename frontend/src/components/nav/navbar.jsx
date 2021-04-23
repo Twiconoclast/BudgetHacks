@@ -5,7 +5,7 @@ import {BiLockOpen} from 'react-icons/bi';
 import logo from '../../images/logo_plain.png';
 import {ImProfile} from 'react-icons/im';
 import {IoMdLogOut} from 'react-icons/io';
-import {GiHamburgerMenu} from 'react-icons/gi';
+// import {GiHamburgerMenu} from 'react-icons/gi';
 
 
 class NavBar extends React.Component {

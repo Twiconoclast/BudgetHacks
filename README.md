@@ -2,7 +2,7 @@
 ![image](https://user-images.githubusercontent.com/70980012/115941670-339f7700-a45b-11eb-8459-fe705a3c3408.png)
 
 ## Description
-This is a link to [BudgetHacks](https://budgethacks.herokuapp.com/#/), an app that allows users to track transactions and create a budget while earning rewards for meeting their goals.
+This is a link to [BudgetHacks](https://budgethacks.herokuapp.com/#/), an app that allows users to track transactions and create a budget while earning rewards for keeping up with their budgets.
 
 ## Technology Used
 
@@ -41,4 +41,30 @@ This is a link to [BudgetHacks](https://budgethacks.herokuapp.com/#/), an app th
   * Encrypts password with salt.
 * Validator
   * Validates the user's inputs and sanitizes strings.
+
+## Features
+
+### Transaction data renders on graphs
+
+1. **Challenge:** Filtering transactions dynamically for trailing three months to illustrate spending trends
+   * **Solution:** Map over all user's transactions to check if date matches specific criteria, aggregate total over amount spend over that period
+
+![image](https://user-images.githubusercontent.com/70980012/115942136-8bd77880-a45d-11eb-85f4-d46103fd6056.png)
+
+
+
+### Redeem prizes by using point aquired from budgetting
+
+1. **Challenge:** Adding points to the user's point balance for the initial budget
+   * **Solution:** Added a counter to the budget schema and checked whether it was the first edit
+2. **Challenge:** Updating point balance on account activity and when prize is redeemed
+   * **Solution:** Add condition in backend route to check user's point balance with the cost of the prize
+ 
+![image](https://user-images.githubusercontent.com/70980012/115942174-c17c6180-a45d-11eb-997f-d5625c8cc0eb.png)
+
+![image](https://user-images.githubusercontent.com/70980012/115942222-fc7e9500-a45d-11eb-9a45-8605d83f85f7.png)
+
+
+
+
 

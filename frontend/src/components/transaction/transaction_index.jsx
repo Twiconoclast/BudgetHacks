@@ -5,7 +5,7 @@ import CreateTransactionContainer from './create_transaction_container'
 // import SpendingChartContainer from '../chart/spending_chart_container';
 
 
-// import {SiAddthis} from 'react-icons/si';
+import {SiAddthis} from 'react-icons/si';
 
 
 // import PrizeStoreContainer from '../prize_store/prize_store_container'
@@ -52,30 +52,33 @@ class TransactionIndex extends React.Component{
     }
 
     return (
-      <div >
+      <div id='transaction-page' className='dashboard'>
+      <section className='transactions-section'>
         <h1>Transaction List</h1>
-        <p>Current Balance : ${fixedBalance}</p>
-
-        <button onClick={this.toggleCreateForm}>Create Transaction</button>
+      <div className='transactions-div'>
+        <p  className='account-balance'>Current Balance : ${fixedBalance}</p>
+        <div className='button-holder'> 
+        <button id='transaction-page-add-button' className='add-trans'  onClick={this.toggleCreateForm}><SiAddthis/><p>Create Transaction</p></button>
+        </div>
           <div className={this.state.createFormShow ? "" : 'hidden'}> 
 
             <CreateTransactionContainer toggleCreateForm={this.toggleCreateForm}/>
           </div>
-        <table>
+        <table  className='transaction-table'>
           <thead>
-            <tr className='transaction-table'>
+            <tr>
               <th>Date:</th>
-              <th>Description:</th>
-              <th>Category:</th>
               <th>Amount:</th>
-              <th>Edit:</th>
+              <th>Category:</th>
+              <th>Description:</th>
+              <th>Actions:</th>
             </tr>
           </thead>
-          <tbody>
             {tList}
-          </tbody>
         </table>
 
+      </div>
+      </section>
       </div>
     )
   }

@@ -28,6 +28,7 @@
       font-weight: 400;
   }
 
+  
   .transaction-date {
       text-align: center;
       margin-bottom: 10px;
@@ -48,5 +49,10 @@
   
   .transaction-prizequantity{
       text-align: center;
+  }
+
+  div#transaction-page {
+      padding-bottom: 50px;
+      margin-bottom: 150px;
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
-import { Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 // Main Navigation
 import NavBarContainer from './nav/navbar_container';
 // Homepage
@@ -17,6 +17,7 @@ import TransactionIndexContainer from './transaction/transaction_index_container
 import DashboardContainer from './dashboard/dashboard_container';
 
 import PrizeStoreContainer from './prize_store/prize_store_container'
+import About from './about_us/about_us';
 
 
 const App = () => (
@@ -26,6 +27,7 @@ const App = () => (
         <AuthRoute exact path="/" component={MainPage} />
         <AuthRoute exact path="/login" component={LoginFormContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
+        <Route exact path="/about" component={About}/>
         {/* <ProtectedRoute exact path="/profile" component={} /> */}
         <ProtectedRoute exact path="/dashboard" component={DashboardContainer} />
         <ProtectedRoute exact path="/transactions" component={TransactionIndexContainer} />

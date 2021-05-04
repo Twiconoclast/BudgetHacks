@@ -23,11 +23,24 @@ class Dashboard extends React.Component{
       .then(() => this.props.fetchTransactions(this.props.user.id))
   }
 
-  componentDidUpdate(prevProps, prevState){
-    if (prevProps.transactions !== this.props.transactions){
-      this.setState(this.state)
+  // componentDidUpdate(prevProps, prevState){
+  //   if (prevProps.transactions !== this.props.transactions){
+  //     this.setState(this.state)
+  //   }
+  // }
+
+  componentDidUpdate(prevProps, prevState) {
+    Object.entries(this.props).forEach(([key, val]) =>
+      prevProps[key] !== val && console.log(`Prop '${key}' changed`)
+    );
+    if (this.state) {
+      Object.entries(this.state).forEach(([key, val]) =>
+        prevState[key] !== val && console.log(`State '${key}' changed`)
+      );
     }
   }
+  
+
 
   toggleCreateForm(e){
     e.preventDefault()
@@ -35,12 +48,18 @@ class Dashboard extends React.Component{
   }
 
   render(){
+    console.log('in the dashboard')
     let budgetChart;
     let spendingChart;
     let transactionsList;
-    if (this.props.transactions){
+
+    if (this.props.transactions && this.props.budget){
       budgetChart =  <BudgetChart user={this.props.user} budget={this.props.budget} transactions={this.props.transactions}/>
       spendingChart = <SpendingChart transactions={this.props.transactions}/>
+    }
+
+
+    if (this.props.transactions){
       transactionsList = this.props.transactions.map((trans)=>{
 
         let category = trans.category.slice(0, 1).toUpperCase() + trans.category.slice(1)

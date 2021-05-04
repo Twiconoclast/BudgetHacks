@@ -36,6 +36,7 @@ class SpendingChart extends React.Component{
   }
 
   render(){
+    console.log("SPENDING CHART")
     let currDate = new Date().getMonth()
     let Month3Label = this.label(currDate)
     let Month3Spending = this.total(this.getMonth(currDate + 1))

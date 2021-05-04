@@ -5,6 +5,8 @@ import {BiLockOpen} from 'react-icons/bi';
 import logo from '../../images/logo_plain.png';
 import {ImProfile} from 'react-icons/im';
 import {IoMdLogOut} from 'react-icons/io';
+import {IoBarChartSharp} from 'react-icons/io5'
+
 // import {GiHamburgerMenu} from 'react-icons/gi';
 
 
@@ -25,6 +27,7 @@ class NavBar extends React.Component {
   logoutUser(e) {
       e.preventDefault();
       this.props.logout();
+      this.props.history.push("/")
   }
 
     // myFunction() {
@@ -50,9 +53,15 @@ class NavBar extends React.Component {
                 </div>
                 <div className='nav-right'>
                     <button>
-                    <Link to={'/'}>                    
+                    <Link to={'/about'}>                    
                     <p className='icon'><ImProfile/></p>
-                    <div className='button-text'> Profile </div>
+                    <div className='button-text'> About Us </div>
+                    </Link>
+                    </button>
+                    <button>
+                    <Link to={'/'}>                    
+                    <p className='icon'><IoBarChartSharp/></p>
+                    <div className='button-text'> Dashboard </div>
                     </Link>
                     </button>
                     <button onClick={this.logoutUser}>
@@ -73,6 +82,12 @@ class NavBar extends React.Component {
                     </Link>
                 </div>
                 <div className='nav-right'>
+                    <button>
+                    <Link to={'/about'}>                    
+                    <p className='icon'><ImProfile/></p>
+                    <div className='button-text'> About Us </div>
+                    </Link>
+                    </button>
                     <button>
                     <Link to="/signup">
                     <p className='icon'><BsPersonPlusFill/></p>

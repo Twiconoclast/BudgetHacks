@@ -60,6 +60,7 @@ class BudgetChart extends React.Component{
   };
 
   render(){
+    console.log('BUDGET CHART')
     let currDay = new Date().getDate()
     let dayLabels = this.label(currDay)
     let currMonth = this.getMonth(new Date().getMonth() + 1)
@@ -69,8 +70,10 @@ class BudgetChart extends React.Component{
       this.total(currMonth, dateString)
       spendData.push(this.total(currMonth, dateString))
     })
-
-    let budget = this.getBudget();
+    let budget;
+    if (this.props.budget){
+      budget = this.getBudget();
+    }
     let budgetData = [];
     let year = new Date().getFullYear();
     let month = new Date().getMonth() + 1;

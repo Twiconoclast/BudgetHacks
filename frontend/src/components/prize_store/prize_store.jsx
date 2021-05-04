@@ -36,7 +36,7 @@ class PrizeStore extends React.Component {
                     {
                         name: "Chevron Gift Card",
                         points: 2000,
-                        url: "https://www.chevron.com/-/media/shared-media/images/chevron-hallmark-twitter.jpg"
+                        url: "https://i5.walmartimages.com/asr/ca5782b6-828a-4138-9475-c24e70ee5725_1.5b020756f610080595efb10790a0e233.png"
                     },
                     {
                         name: "Amazon Gift Card",

@@ -3,9 +3,9 @@ import { Line } from 'react-chartjs-2';
 
 class BudgetChart extends React.Component{
 
-  componentDidMount(){
-    this.props.fetchBudget(this.props.user.id)
-  }
+  // componentDidMount(){
+  //   // this.props.fetchBudget(this.props.user.id)
+  // }
 
   total(month, day){
     let total = 0;

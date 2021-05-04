@@ -21,7 +21,9 @@ class NavBar extends React.Component {
 
   handleDemo(e) {
       e.preventDefault();
-       this.props.login( { username: 'DemoUser', password: '123456'} );
+       this.props.login( { username: 'DemoUser', password: '123456'} )
+        .then(() => this.props.history.push("/dashboard"))
+       
   } 
 
   logoutUser(e) {

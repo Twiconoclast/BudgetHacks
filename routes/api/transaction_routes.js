@@ -63,9 +63,7 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, re
   Transaction.findById(req.params.id).then(transaction =>{
     if(req.user._id.equals(transaction.user)){
         User.findById(req.user._id).then(user =>{
-        console.log(transaction.amount, typeof transaction.amount)
         user.balance += transaction.amount
-        console.log(user.balance)
         user.save();})
        Transaction.findByIdAndDelete(req.params.id, function(err, transaction){
       if(err){
@@ -97,10 +95,8 @@ router.patch('/:id', passport.authenticate('jwt', {session: false}), (req, res) 
       } else {
         let transAmt = Number(req.body.amount);
         User.findById(req.user._id).then(user =>{
-          console.log(transaction.amount, typeof transaction.amount)
         user.balance += transaction.amount
         user.balance -= transAmt;
-        console.log(user.balance)
         user.save();
       })
         res.send(result);

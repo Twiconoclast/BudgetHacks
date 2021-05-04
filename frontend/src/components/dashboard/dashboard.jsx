@@ -1,5 +1,4 @@
 import React from 'react';
-import TransactionItemContainer from './transaction_item_container';
 import CreateTransactionContainer from '../transaction/create_transaction_container';
 import BudgetChartContainer from '../chart/budget_chart_container';
 import SpendingChartContainer from '../chart/spending_chart_container';
@@ -41,7 +40,20 @@ class Dashboard extends React.Component{
     let transactionsList;
     if (this.props.transactions){
       transactionsList = this.props.transactions.map((trans)=>{
-        return <TransactionItemContainer key={trans._id} transaction={trans}/>
+
+        let category = trans.category.slice(0, 1).toUpperCase() + trans.category.slice(1)
+    if (category === 'FoodAndDining') {
+            category = 'Food and Dining'
+          }
+    if (category === 'PersonalCare') {
+            category = 'Personal Care'
+          }
+        return (<tr key={trans._id} className='transaction_info'>
+        <td className='transaction-date'>{trans.date}</td>
+        <td className='transaction-description'>{trans.description}</td>
+        <td className='transaction-category'>{category}</td>
+        <td className='transaction-amount'>{trans.amount}</td>
+    </tr>)
       })
     }
     let prizeList = [];

@@ -3,9 +3,16 @@ import { Line } from 'react-chartjs-2';
 
 class BudgetChart extends React.Component{
 
-  // componentDidMount(){
-  //   // this.props.fetchBudget(this.props.user.id)
-  // }
+  constructor(props) {
+    super(props)
+    this.state = {loading: true}
+  }
+
+  componentDidMount(){
+    setTimeout(() => {
+      this.setState({loading:false})
+    }, 1000)
+  }
 
   total(month, day){
     let total = 0;
@@ -60,7 +67,7 @@ class BudgetChart extends React.Component{
   };
 
   render(){
-    console.log('BUDGET CHART')
+ 
     let currDay = new Date().getDate()
     let dayLabels = this.label(currDay)
     let currMonth = this.getMonth(new Date().getMonth() + 1)
@@ -124,12 +131,26 @@ class BudgetChart extends React.Component{
     responsive: true,
     maintainAspectRatio: true,
     }
-    return(
-      <div className='line-chart'>
+
+    let loadingClass = this.state.loading ? 'loader': '';
+
+
+    let display = this.state.loading ? (
+      <div className='bar-chart'>
+        <div className={`${loadingClass}`}></div>
+      </div>
+
+    ) : (
+      <div className='bar-chart'>
         <Line data={data} options={options}/>
       </div>
-    )
-  }
+    );
+
+      return(
+        display
+      )}
+    
+  
 }
 
 export default BudgetChart

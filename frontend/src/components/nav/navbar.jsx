@@ -67,10 +67,10 @@ class NavBar extends React.Component {
                     </Link>
                     </button>
                     <button onClick={this.logoutUser}>
-                        <a href="">
-                        <p className='icon'><IoMdLogOut/></p>
-                        <div className='button-text'> Logout </div>
-                        </a>
+                        <div className='a'>
+                            <p className='icon'><IoMdLogOut/></p>
+                            <div className='button-text'> Logout </div>
+                        </div>
                     </button>
                 </div>
             </nav>

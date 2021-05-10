@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
+
 
 class BudgetForm extends Component {
     constructor(props) {
@@ -234,7 +234,6 @@ class BudgetForm extends Component {
                         </div>
                     </form>
                 </div>
-                <Link to='/dashboard'>Back to Home</Link>
             </div>
         )
     }

@@ -29,16 +29,16 @@ class Dashboard extends React.Component{
   //   }
   // }
 
-  componentDidUpdate(prevProps, prevState) {
-    Object.entries(this.props).forEach(([key, val]) =>
-      prevProps[key] !== val && console.log(`Prop '${key}' changed`)
-    );
-    if (this.state) {
-      Object.entries(this.state).forEach(([key, val]) =>
-        prevState[key] !== val && console.log(`State '${key}' changed`)
-      );
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   Object.entries(this.props).forEach(([key, val]) =>
+  //     prevProps[key] !== val && console.log(`Prop '${key}' changed`)
+  //   );
+  //   if (this.state) {
+  //     Object.entries(this.state).forEach(([key, val]) =>
+  //       prevState[key] !== val && console.log(`State '${key}' changed`)
+  //     );
+  //   }
+  // }
   
 
 
@@ -48,7 +48,6 @@ class Dashboard extends React.Component{
   }
 
   render(){
-    console.log('in the dashboard')
     let budgetChart;
     let spendingChart;
     let transactionsList;
@@ -117,6 +116,8 @@ class Dashboard extends React.Component{
           <td className="transaction-dollars">${this.props.budget[category] * this.props.budget.income}</td>
           <td className="transaction-percentage">{this.props.budget[category] * 100}%</td>
         </tr>)
+        } else {
+          return <tr key={category}></tr>
         }
       })
     }

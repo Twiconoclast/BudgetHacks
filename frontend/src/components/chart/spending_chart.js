@@ -2,6 +2,10 @@ import React from 'react'
 import { Bar } from 'react-chartjs-2';
 
 class SpendingChart extends React.Component{
+  constructor(props) {
+    super(props)
+    this.state = {loading: true}
+  }
 
   total(month){
     let total = 0;
@@ -15,6 +19,12 @@ class SpendingChart extends React.Component{
       }
     })
     return total;
+  }
+
+  componentDidMount(){
+    setTimeout(() => {
+      this.setState({loading:false})
+    }, 1000)
   }
 
   getMonth(month){
@@ -36,7 +46,7 @@ class SpendingChart extends React.Component{
   }
 
   render(){
-    console.log("SPENDING CHART")
+
     let currDate = new Date().getMonth()
     let Month3Label = this.label(currDate)
     let Month3Spending = this.total(this.getMonth(currDate + 1))
@@ -78,10 +88,24 @@ class SpendingChart extends React.Component{
       responsive: true,
       maintainAspectRatio: true,
     }
-    return(
+
+    let loadingClass = this.state.loading ? 'loader': '';
+
+
+    let display = this.state.loading ? (
+      <div className='bar-chart'>
+        <div className={`${loadingClass}`}></div>
+      </div>
+
+    ) : (
       <div className='bar-chart'>
         <Bar data={data} options={options}/>
       </div>
+    );
+
+    return(
+
+      display
     )
   }
 }

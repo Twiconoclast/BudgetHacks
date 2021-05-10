@@ -46,6 +46,7 @@ class CreateTransactionForm extends React.Component{
               <input onChange={this.handleChange('amount')} type="text" value={this.state.amount} placeholder='19.99'/>
             </label>
             <label>Category:
+              <br/>
               <select defaultValue='' onChange={this.handleChange('category')} name="category" >
                 <option value='' disabled>---select---</option>
                 <option value="income">Income</option>

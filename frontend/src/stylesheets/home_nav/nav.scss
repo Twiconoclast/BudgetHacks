@@ -64,6 +64,7 @@ body {
             display: flex;
             align-items: center;
         }
+        
     }
 
     p.icon {
@@ -136,7 +137,9 @@ body {
                 display: flex;
                 align-items: center;
             }
+            
         }
+        
 
         p.icon {
             padding-right: 4px;
@@ -149,4 +152,11 @@ body {
             }
         }
     }
+}
+
+// for logout button
+
+.a {
+    display: flex;
+    align-items: center;
 }

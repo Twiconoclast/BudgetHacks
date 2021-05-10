@@ -1,6 +1,6 @@
 import React from 'react'
 import EditTransactionFormContainer from './edit_transaction_form_container'
-import {SiAddthis} from 'react-icons/si';
+// import {SiAddthis} from 'react-icons/si';
 
 class TransactionShow extends React.Component{
   constructor(props){

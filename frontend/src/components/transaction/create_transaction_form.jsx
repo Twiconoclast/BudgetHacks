@@ -40,7 +40,12 @@ class CreateTransactionForm extends React.Component{
         <form onSubmit={this.handleSubmit}>
           <div className='create-trans-form'>
             <label>Date:
-              <input onChange={this.handleChange('date')} type="date" name='date' value={this.state.date}/>
+              <input
+                onKeyDown={(e) => e.preventDefault()}
+                disableentry='true'
+                placeholder="dd-mm-yyyy"
+                min="1997-01-01" 
+                onChange={this.handleChange('date')} type="date" name='date' value={this.state.date}/>
             </label>
             <label>Amount:
               <input onChange={this.handleChange('amount')} type="text" value={this.state.amount} placeholder='19.99'/>

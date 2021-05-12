@@ -76,14 +76,27 @@ class SpendingChart extends React.Component{
     }
     
     const options = {
+      plugins: {
+        title: {
+            display: true,
+            text: 'Monthly Spending Comparison'
+        },
+      },
       scales: {
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
-            },
+        x: {
+          title: {
+            color: 'grey',
+            display: true,
+            text: 'Month'
+          }
+        },
+        y: {
+          title: {
+            color: 'grey',
+            display: true,
+            text: 'Month Spending'
           },
-        ],
+        },
       },
       responsive: true,
       maintainAspectRatio: true,

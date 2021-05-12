@@ -66,6 +66,7 @@ class BudgetChart extends React.Component{
     return total;
   };
 
+
   render(){
  
     let currDay = new Date().getDate()
@@ -119,14 +120,27 @@ class BudgetChart extends React.Component{
     }
     
     const options = {
+      plugins: {
+        title: {
+            display: true,
+            text: 'Spending vs Budget Chart'
+        },
+      },
       scales: {
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
-            },
+        x: {
+          title: {
+            color: 'grey',
+            display: true,
+            text: 'Day of the Month'
+          }
+        },
+        y: {
+          title: {
+            color: 'grey',
+            display: true,
+            text: 'Budget Spent'
           },
-        ],
+        },
       },
     responsive: true,
     maintainAspectRatio: true,

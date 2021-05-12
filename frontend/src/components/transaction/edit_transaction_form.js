@@ -40,7 +40,7 @@ class EditTransactionForm extends React.Component{
                     <td className='hidden'><form onSubmit={this.handleSubmit} ><input type='hidden'/></form></td>
                     <td className='transaction-date'><input onChange={this.handleChange('date')} type="date" name='date' value={this.state.date}/></td>
                     <td className='transaction-amount'><input onChange={this.handleChange('amount')} type="text" value={this.state.amount}/></td>
-                    <td className='transaction-category'><select onChange={this.handleChange('category')} name="category" >
+                    <td className='transaction-category'><select defaultValue={this.state.category} onChange={this.handleChange('category')} name="category" >
                       <option value="income">Income</option>
                       <option value="home">Home</option>
                       <option value="savings">Savings</option>
@@ -53,14 +53,13 @@ class EditTransactionForm extends React.Component{
                       <option value="debt">Debt</option>
                     </select></td>
                     <td className='transaction-description'><input type='text' onChange={this.handleChange('description')} name="description" value={this.state.description}/></td>
-                    <td><button onClick={this.handleSubmit} type='submit'>Submit</button>
-                    <button onClick={this.props.toggleEditForm}>Close</button>
-                    <button onClick={() => {
+                    <td id='edit-button-holder'><button className='edit-form-button' onClick={this.handleSubmit} type='submit'>Submit</button>
+                    <button className='edit-form-button' onClick={this.props.toggleEditForm}>Close</button>
+                    <button className='edit-form-button' onClick={() => {
                         return this.props.deleteTransaction(this.props.transaction._id)
                           .then(() => this.props.fetchUser(this.props.user.id))
                           }}>Delete</button></td>
-        
-  
+
       </tr>
     )
   }

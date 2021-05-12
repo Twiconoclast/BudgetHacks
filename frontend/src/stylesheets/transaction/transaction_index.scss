@@ -51,8 +51,64 @@
       text-align: center;
   }
 
+  .transaction-description{
+      text-align: center;
+  }
+
   div#transaction-page {
       padding-bottom: 50px;
       margin-bottom: 150px;
   }
+}
+
+#edit-button-holder {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.edit-form-button {
+    background-color: #23689b;
+    color: white;
+    padding: 2%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 4px;
+}
+
+.edit-form-button:hover {
+    background-color: $light-gray;
+}
+
+.table-cell {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.add-pointer {
+    cursor: pointer;
+}
+
+.date-stuff {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    input {
+        font-size: 20px;
+        margin: 0;
+    }
+
+    button {
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 2px;
+    }
+
+    button:hover {
+        background-color: $light-gray;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }

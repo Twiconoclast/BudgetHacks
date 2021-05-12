@@ -57,7 +57,7 @@ class TransactionShow extends React.Component{
                     <td className='transaction-amount'>{this.props.transaction.amount}</td>
                     <td className='transaction-category'>{category}</td>
                     <td className='transaction-description' >{this.props.transaction.description}</td>
-                    <td className='table-cell'><button onClick={this.toggleEditForm}>Edit</button></td>
+                    <td className='table-cell'><button className='edit-form-button' onClick={this.toggleEditForm}>Edit</button></td>
                   </tr>
                     <EditTransactionFormContainer editFormShow={this.state.editFormShow} toggleEditForm={this.toggleEditForm} transaction={this.props.transaction}/>
 

@@ -10,7 +10,9 @@ const starter = (a,b) => {
 const mSTP = state => ({
     user: state.session.user,
     transactions: Object.values(state.transactions).sort(starter),
-    balance: state.user.balance
+    balance: state.user.balance,
+    selectedCategory: 'all',
+    selectedDate: "yyyy-MM-dd"
 })
 
 const mDTP = dispatch => ({

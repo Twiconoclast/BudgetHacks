@@ -3,6 +3,7 @@ body {
 }
 
 .login-signup {
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -82,6 +83,7 @@ body {
 @include mobile {
 
     .login-signup {
+        background-color: white;
         display: flex;
         flex-direction: column;
         align-items: center;

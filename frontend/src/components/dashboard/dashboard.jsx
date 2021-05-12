@@ -90,7 +90,7 @@ class Dashboard extends React.Component{
     if (this.props.transactions){
       transactionsList = this.props.transactions.map((trans)=>{
         let category = trans.category.slice(0, 1).toUpperCase() + trans.category.slice(1)
-        console.log(typeof trans.date)
+
           if (category === 'FoodAndDining') {
                   category = 'Food and Dining'
                 }

@@ -13,7 +13,7 @@ class BudgetForm extends Component {
             foodAndDining: parseFloat(this.props.foodAndDining),
             shopping: parseFloat(this.props.shopping),
             entertainment: parseFloat(this.props.entertainment),
-            miscellaneous: parseFloat(this.props.miscellaneous),
+            miscellaneous: parseFloat(this.props.miscellaneous), 
             debt: parseFloat(this.props.debt),
             editCounter: parseInt(this.props.editCounter + 1)
         }
